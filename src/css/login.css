@@ -1,0 +1,29 @@
+.login-container {
+  position: relative;
+  text-align: center;
+  color: white;
+  height: 100%;
+  background-color: rgba(76, 175, 80, 1);
+}
+.white-text {
+  color: white;
+}
+#logo-card {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform-origin: 0 0 0;
+  transform: translate(-50%, -50%);
+}
+.first-btn {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.second-btn {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
