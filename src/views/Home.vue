@@ -1,20 +1,27 @@
 <template>
   <v-container>
-    <v-card>{{ books }}</v-card>
+    <v-card v-for="b in books" :key="b.index">{{ b }}</v-card>
+    <v-card>{{ error }}</v-card>
   </v-container>
 </template>
 <script>
 import { mapState } from "vuex";
-import { functions } from "@/main.js";
+import firebase from "@/plugins/firebase";
 
 export default {
   data: () => ({
     books: [],
-    database: null
+    error: null
   }),
   async created() {
-    const getBooks = functions.httpsCallable("getBooks");
-    this.books = await getBooks();
+    this.error = null;
+    const getBooks = firebase.functions().httpsCallable("getBooks");
+    try {
+      const response = await getBooks();
+      this.books = response?.data?.body;
+    } catch (error) {
+      this.error = error;
+    }
   },
   computed: {
     ...mapState(["token", "userName"])

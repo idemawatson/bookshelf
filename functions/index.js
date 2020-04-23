@@ -5,17 +5,16 @@ admin.initializeApp(functions.config().firebase);
 
 let db = admin.firestore();
 //onCallの調査
-exports.getBooks = functions.https.onCall(async (req, res) => {
+exports.getBooks = functions.https.onCall(async (data, context) => {
   const bookRef = db.collection("book");
   try {
     const snapshot = await bookRef.get();
     let ret = [];
     snapshot.forEach(doc => {
-      ret.push(doc.data().name());
+      ret.push(doc.data().name);
     });
-    res.send({ body: ret });
+    return { body: ret };
   } catch (e) {
-    console.log("Error getting documents", e);
-    res.status(400).send(e);
+    throw new functions.https.HttpsError("unknown", e.message, e);
   }
 });
