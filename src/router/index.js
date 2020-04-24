@@ -18,6 +18,11 @@ const routes = [
     component: Home
   },
   {
+    path: "/search",
+    name: "search",
+    component: import("@/views/Search.vue")
+  },
+  {
     path: "/error",
     name: "Error",
     component: Error_404

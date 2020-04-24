@@ -1,6 +1,13 @@
 <template>
   <transition name="note">
-    <v-card class="note" :color="color" :class="leftBorder" v-if="showNote" raised max-width="300">
+    <v-card
+      class="note"
+      :color="color"
+      :class="leftBorder"
+      v-if="showNote"
+      raised
+      max-width="300"
+    >
       <p class="ma-4" style="font-weight: bold; color: white;">{{ text }}</p>
     </v-card>
   </transition>
@@ -35,10 +42,8 @@ export default {
       this.showNote = true;
       setTimeout(this.reset, 3000);
     },
-    reset () {
-      this.showNote = false,
-      this.text = "",
-      this.color = ""
+    reset() {
+      (this.showNote = false), (this.text = ""), (this.color = "");
     }
   }
 };
@@ -51,18 +56,20 @@ export default {
   border-left: solid 15px;
 }
 .success_bar {
-  border-left-color: #2E7D32 !important;
+  border-left-color: #2e7d32 !important;
 }
 .error_bar {
-  border-left-color: #D50000 !important;
+  border-left-color: #d50000 !important;
 }
 .info_bar {
-  border-left-color: #29B6F6 !important;
+  border-left-color: #29b6f6 !important;
 }
-.note-enter-active, .note-leave-active {
-  transition: opacity .5s;
+.note-enter-active,
+.note-leave-active {
+  transition: opacity 0.5s;
 }
-.note-enter, .note-leave-to {
+.note-enter,
+.note-leave-to {
   opacity: 0;
 }
 </style>

@@ -127,7 +127,7 @@ export default {
       this.$refs.form.reset();
       this.showLogin = false;
       this.showSignup = false;
-    },
+    }
   }
 };
 </script>
