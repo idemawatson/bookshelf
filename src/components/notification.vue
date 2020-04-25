@@ -2,48 +2,65 @@
   <transition name="note">
     <v-card
       class="note"
+      v-if="show"
       :color="color"
-      :class="leftBorder"
-      v-if="showNote"
+      :class="leftBar"
       raised
       max-width="300"
+      @click="show = false"
     >
       <p class="ma-4" style="font-weight: bold; color: white;">{{ text }}</p>
     </v-card>
   </transition>
 </template>
 <script>
+const INFO_COLOR = "#81d4fa";
+const ERROR_COLOR = "#ff1744";
+const SUCCESS_COLOR = "#4CAF50";
+const INFO = "info";
+const SUCCESS = "success";
+const ERROR = "error";
+
 export default {
   data: () => ({
-    showNote: false,
-    text: "",
-    color: "",
-    leftBorder: ""
+    status: String,
+    text: String,
+    color: String,
+    show: false
   }),
   methods: {
-    updateAndShowNote(status, text) {
-      switch (status) {
-        case "info":
-          this.color = "#81d4fa";
-          this.leftBorder = status + "_bar";
-          break;
-        case "error":
-          this.color = "#ff1744";
-          this.leftBorder = status + "_bar";
-          break;
-        case "success":
-          this.color = "#4CAF50";
-          this.leftBorder = status + "_bar";
-          break;
-        default:
-          break;
-      }
+    success(text) {
+      this.status = SUCCESS;
       this.text = text;
-      this.showNote = true;
+      this.color = SUCCESS_COLOR;
+      this.showNote();
+    },
+    error(text) {
+      this.status = ERROR;
+      this.text = text;
+      this.color = ERROR_COLOR;
+      this.showNote();
+    },
+    info(text) {
+      this.status = INFO;
+      this.text = text;
+      this.color = INFO_COLOR;
+      this.showNote();
+    },
+    showNote() {
+      this.show = true;
       setTimeout(this.reset, 3000);
     },
     reset() {
-      (this.showNote = false), (this.text = ""), (this.color = "");
+      this.status = "";
+      this.text = "";
+      this.color = "";
+      this.show = false;
+    }
+  },
+  computed: {
+    leftBar: () => {
+      return this?.status + "_bar";
     }
   }
 };

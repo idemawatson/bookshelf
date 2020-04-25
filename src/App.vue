@@ -1,27 +1,25 @@
 <template>
   <v-app class="appTop">
-    <searchForm></searchForm>
     <v-content>
-      <v-container fluid>
-        <router-view></router-view>
-      </v-container>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import searchForm from "@/components/searchForm";
 export default {
   name: "App",
   data: () => ({
     //
-  }),
-  components: {
-    searchForm
-  }
+  })
 };
 </script>
 <style>
+:root {
+  --contents-color: rgba(76, 175, 80, 1);
+  --white-color: rgba(242, 242, 242, 1);
+  --dark-color: rgba(92, 115, 93, 1);
+}
 .appTop {
   font-size: 16px;
 }

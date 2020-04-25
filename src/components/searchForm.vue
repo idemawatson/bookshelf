@@ -1,28 +1,21 @@
 <template>
   <v-card absolute color="rgba(76, 175, 80, 1.0)" id="searchBar" class="pa-2">
     <div class="appTitle">bookshelf</div>
-    <div id="searchField">
-      <v-row>
-        <v-col cols="12">
-          <v-text-field
-            v-model="searchWord"
-            class="mt-2"
-            label="search"
-            hide-details
-            dense
-            solo
-            color="white"
-            append-icon="mdi-magnify"
-          >
-            <template v-slot:append-outer>
-              <v-btn v-on="$emit('search', searchWord)">
-                検索
-              </v-btn>
-            </template>
-          </v-text-field>
-        </v-col>
-      </v-row>
-    </div>
+    <form id="searchForm" class="mt-1 mb-1">
+      <input
+        id="termField"
+        class="pa-1 pl-4"
+        type="text"
+        v-model="searchWord"
+        placeholder="キーワードを入力"
+      />
+      <input
+        type="button"
+        id="searchBtn"
+        value="検索"
+        @click="$emit('search', searchWord)"
+      />
+    </form>
   </v-card>
 </template>
 <script>
@@ -37,12 +30,26 @@ export default {
   text-align: center;
   font-size: 24px;
   font-weight: bold;
-  color: white;
+  color: var(--white-color);
   letter-spacing: 0.05em;
 }
-#searchField {
-  max-width: 90%;
+#searchForm {
+  position: relative;
   text-align: center;
-  margin: auto !important;
+}
+#termField {
+  width: 80%;
+  border-radius: 20px;
+  outline: 0;
+  background: var(--white-color);
+}
+#searchBtn {
+  position: absolute;
+  right: 10%;
+  background: var(--dark-color);
+  color: var(--white-color);
+  border-radius: 0 20px 20px 0;
+  height: 100%;
+  width: 15%;
 }
 </style>

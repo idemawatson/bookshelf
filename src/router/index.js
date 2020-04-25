@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Login from "@/views/Login.vue";
 import Home from "@/views/Home.vue";
 import Error_404 from "@/views/Error.vue";
+import Search from "@/views/Search.vue";
 
 Vue.use(VueRouter);
 
@@ -20,7 +21,7 @@ const routes = [
   {
     path: "/search",
     name: "search",
-    component: import("@/views/Search.vue")
+    component: Search
   },
   {
     path: "/error",
