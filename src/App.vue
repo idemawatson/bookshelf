@@ -1,5 +1,5 @@
 <template>
-  <v-app class="appTop">
+  <v-app class="app-top">
     <v-content>
       <router-view></router-view>
     </v-content>
@@ -20,7 +20,7 @@ export default {
   --white-color: rgba(242, 242, 242, 1);
   --dark-color: rgba(92, 115, 93, 1);
 }
-.appTop {
+.app-top {
   font-size: 16px;
 }
 </style>

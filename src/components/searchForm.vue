@@ -1,17 +1,20 @@
 <template>
-  <v-card absolute color="rgba(76, 175, 80, 1.0)" id="searchBar" class="pa-2">
-    <div class="appTitle">bookshelf</div>
-    <form id="searchForm" class="mt-1 mb-1">
+  <v-card absolute color="rgba(76, 175, 80, 1.0)" id="searchBar" class="pa-3">
+    <div class="app-title">Bookshelf</div>
+    <form id="search-form" class="mt-1 mb-1">
       <input
-        id="termField"
+        id="term-field"
         class="pa-1 pl-4"
         type="text"
         v-model="searchWord"
         placeholder="キーワードを入力"
       />
+      <v-icon medium class="term-clear" @click="searchWord = ''"
+        >mdi-close</v-icon
+      >
       <input
         type="button"
-        id="searchBtn"
+        id="search-btn"
         value="検索"
         @click="$emit('search', searchWord)"
       />
@@ -26,24 +29,30 @@ export default {
 };
 </script>
 <style scoped>
-.appTitle {
+.app-title {
   text-align: center;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
   color: var(--white-color);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
-#searchForm {
+#search-form {
   position: relative;
   text-align: center;
 }
-#termField {
+#term-field {
   width: 80%;
   border-radius: 20px;
   outline: 0;
   background: var(--white-color);
 }
-#searchBtn {
+.term-clear {
+  position: absolute;
+  top: 10%;
+  right: 26%;
+  color: var(--dark-color);
+}
+#search-btn {
   position: absolute;
   right: 10%;
   background: var(--dark-color);

@@ -2,7 +2,7 @@
   <div>
     <div>
       <searchForm @search="search"></searchForm>
-      <div v-for="r in result" :key="r.index">{{ r }}</div>
+      <Book v-for="r in results" :key="r.index" v-bind="r"></Book>
     </div>
     <Note ref="note"></Note>
   </div>
@@ -10,28 +10,46 @@
 <script>
 import searchForm from "@/components/searchForm";
 import Note from "@/components/notification";
+import Book from "@/components/book";
 import axios from "axios";
+
 export default {
   components: {
     searchForm,
-    Note
+    Note,
+    Book
   },
   data: () => ({
-    result: []
+    results: []
   }),
   methods: {
     async search(searchWord) {
+      this.results = [];
       if (searchWord.length === 0) return;
       try {
         const url =
           "https://www.googleapis.com/books/v1/volumes?q=" + searchWord;
         const res = await axios.get(encodeURI(url));
+        // const res = await import("@/assets/sampleSearchResult.json");
         const items = res.data?.items;
         for (const item of items) {
-          this.result.push(item.volumeInfo?.title);
+          const info = item.volumeInfo;
+          if (!info?.description) continue;
+          this.results.push({
+            title: info?.title,
+            authors: info?.authors?.join(","),
+            url: info?.imageLinks?.smallThumbnail,
+            publishedDate: info?.publishedDate,
+            pageCount: info?.pageCount,
+            description:
+              info?.description < 100
+                ? info?.description
+                : info?.description?.substr(0, 69) + "..."
+          });
         }
       } catch (error) {
         this.$refs.note.error("通信エラーが発生しました。");
+        console.log(error);
       }
     }
   }

@@ -1,0 +1,759 @@
+{
+  "data": {
+    "kind": "books#volumes",
+    "totalItems": 3676,
+    "items": [
+      {
+        "kind": "books#volume",
+        "id": "uco9vQEACAAJ",
+        "etag": "UrWiyPVKhus",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/uco9vQEACAAJ",
+        "volumeInfo": {
+          "title": "沈黙のパレード",
+          "authors": ["東野圭吾"],
+          "publishedDate": "2018-10",
+          "description": "秋祭りのパレードで、ある殺人が起きる。容疑者は街の人々全て! 哀しき復讐者たちが、湯川や草薙、内海薫の前に立ちはだかる。",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_10",
+              "identifier": "4163908714"
+            },
+            {
+              "type": "ISBN_13",
+              "identifier": "9784163908717"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": false
+          },
+          "pageCount": 448,
+          "printType": "BOOK",
+          "averageRating": 5.0,
+          "ratingsCount": 1,
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "preview-1.0.0",
+          "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=uco9vQEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=uco9vQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          },
+          "language": "ja",
+          "previewLink": "http://books.google.co.jp/books?id=uco9vQEACAAJ&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&cd=1&source=gbs_api",
+          "infoLink": "http://books.google.co.jp/books?id=uco9vQEACAAJ&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89.html?hl=&id=uco9vQEACAAJ"
+        },
+        "saleInfo": {
+          "country": "JP",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "JP",
+          "viewability": "NO_PAGES",
+          "embeddable": false,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": false
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=uco9vQEACAAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "NONE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "秋祭りのパレードで、ある殺人が起きる。容疑者は街の人々全て! 哀しき復讐者たちが、湯川や草薙、内海薫の前に立ちはだかる。"
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "TL3APAAACAAJ",
+        "etag": "hOItjWJoxHU",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/TL3APAAACAAJ",
+        "volumeInfo": {
+          "title": "容疑者Xの献身",
+          "authors": ["東野圭吾"],
+          "publisher": "Bungeishunju/Tsai Fong Books",
+          "publishedDate": "2008-08",
+          "description": "天才数学者でありながら不遇な日日を送っていた高校教師の石神は、一人娘と暮らす隣人の靖子に秘かな想いを寄せていた。彼女たちが前夫を殺害したことを知った彼は、二人を救うため完全犯罪を企てる。だが皮肉にも、石神のかつての親友である物理学者の湯川学が、その謎に挑むことになる。ガリレオシリーズ初の長篇、直木賞受賞作。",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_10",
+              "identifier": "4167110121"
+            },
+            {
+              "type": "ISBN_13",
+              "identifier": "9784167110123"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": false
+          },
+          "pageCount": 394,
+          "printType": "BOOK",
+          "categories": ["Abused women"],
+          "averageRating": 3.5,
+          "ratingsCount": 48,
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "preview-1.0.0",
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=TL3APAAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=TL3APAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          },
+          "language": "ja",
+          "previewLink": "http://books.google.co.jp/books?id=TL3APAAACAAJ&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&cd=2&source=gbs_api",
+          "infoLink": "http://books.google.co.jp/books?id=TL3APAAACAAJ&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/%E5%AE%B9%E7%96%91%E8%80%85X%E3%81%AE%E7%8C%AE%E8%BA%AB.html?hl=&id=TL3APAAACAAJ"
+        },
+        "saleInfo": {
+          "country": "JP",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "JP",
+          "viewability": "NO_PAGES",
+          "embeddable": false,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": false
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=TL3APAAACAAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "NONE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "天才数学者でありながら不遇な日日を送っていた高校教師の石神は、一人娘と暮らす隣人の靖子に秘かな想いを寄せていた。彼女たちが前夫を殺害したことを知った彼は、二人を ..."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "1LcsAwEACAAJ",
+        "etag": "+tv+tkWusOU",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/1LcsAwEACAAJ",
+        "volumeInfo": {
+          "title": "ガリレオの苦悩",
+          "authors": ["東野圭吾"],
+          "publishedDate": "2011-10",
+          "description": "“悪魔の手”と名のる人物から、警視庁に送りつけられた怪文書。そこには、連続殺人の犯行予告と、帝都大学准教授・湯川学を名指して挑発する文面が記されていた。湯川を標的とする犯人の狙いは何か?常識を超えた恐るべき殺人方法とは?邪悪な犯罪者と天才物理学者の対決を圧倒的スケールで描く、大人気シリーズ第四弾。",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_10",
+              "identifier": "416711013X"
+            },
+            {
+              "type": "ISBN_13",
+              "identifier": "9784167110130"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": false
+          },
+          "pageCount": 376,
+          "printType": "BOOK",
+          "categories": ["Detective and mystery stories, Japanese"],
+          "averageRating": 5.0,
+          "ratingsCount": 1,
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "preview-1.0.0",
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=1LcsAwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=1LcsAwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          },
+          "language": "ja",
+          "previewLink": "http://books.google.co.jp/books?id=1LcsAwEACAAJ&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&cd=3&source=gbs_api",
+          "infoLink": "http://books.google.co.jp/books?id=1LcsAwEACAAJ&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/%E3%82%AC%E3%83%AA%E3%83%AC%E3%82%AA%E3%81%AE%E8%8B%A6%E6%82%A9.html?hl=&id=1LcsAwEACAAJ"
+        },
+        "saleInfo": {
+          "country": "JP",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "JP",
+          "viewability": "NO_PAGES",
+          "embeddable": false,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": false
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=1LcsAwEACAAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "NONE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "“悪魔の手”と名のる人物から、警視庁に送りつけられた怪文書。そこには、連続殺人の犯行予告と、帝都大学准教授・湯川学を名指して挑発する文面が記されていた。湯川を標 ..."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "Al6rDwAAQBAJ",
+        "etag": "CL5cKO7ekpY",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/Al6rDwAAQBAJ",
+        "volumeInfo": {
+          "title": "ミステリと言う勿れ（５）",
+          "authors": ["田村由美"],
+          "publisher": "小学館",
+          "publishedDate": "2019-09-10",
+          "description": "話題沸騰シリーズ 新章突入！ 坂で転がり落ち、検査入院することになった整。 その病院で出会った謎の美少女・ライカの言葉に導かれて動く内に、 整は不穏な都市伝説に遭遇する。 子どもを救う“炎の天使”とは一体――！？ マンガ大賞2019 第2位＆[このマンガがすごい！2019]オンナ編 第2位の話題作、新展開の第5巻！",
+          "industryIdentifiers": [
+            {
+              "type": "OTHER",
+              "identifier": "PKEY:BT000048433000500501900203"
+            }
+          ],
+          "readingModes": {
+            "text": true,
+            "image": true
+          },
+          "pageCount": 192,
+          "printType": "BOOK",
+          "categories": ["Comics & Graphic Novels"],
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": true,
+          "contentVersion": "1.2.2.0.preview.3",
+          "panelizationSummary": {
+            "containsEpubBubbles": true,
+            "containsImageBubbles": true,
+            "epubBubbleVersion": "73953c81ada7f612_A",
+            "imageBubbleVersion": "73953c81ada7f612_A"
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=Al6rDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=Al6rDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+          },
+          "language": "ja",
+          "previewLink": "http://books.google.co.jp/books?id=Al6rDwAAQBAJ&printsec=frontcover&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&cd=4&source=gbs_api",
+          "infoLink": "https://play.google.com/store/books/details?id=Al6rDwAAQBAJ&source=gbs_api",
+          "canonicalVolumeLink": "https://play.google.com/store/books/details?id=Al6rDwAAQBAJ",
+          "seriesInfo": {
+            "kind": "books#volume_series_info",
+            "bookDisplayNumber": "5",
+            "volumeSeries": [
+              {
+                "seriesId": "xnn_GgAAABA4YM",
+                "seriesBookType": "COLLECTED_EDITION",
+                "orderNumber": 6
+              }
+            ]
+          }
+        },
+        "saleInfo": {
+          "country": "JP",
+          "saleability": "FOR_SALE",
+          "isEbook": true,
+          "listPrice": {
+            "amount": 462.0,
+            "currencyCode": "JPY"
+          },
+          "retailPrice": {
+            "amount": 462.0,
+            "currencyCode": "JPY"
+          },
+          "buyLink": "https://play.google.com/store/books/details?id=Al6rDwAAQBAJ&rdid=book-Al6rDwAAQBAJ&rdot=1&source=gbs_api",
+          "offers": [
+            {
+              "finskyOfferType": 1,
+              "listPrice": {
+                "amountInMicros": 4.62e8,
+                "currencyCode": "JPY"
+              },
+              "retailPrice": {
+                "amountInMicros": 4.62e8,
+                "currencyCode": "JPY"
+              }
+            }
+          ]
+        },
+        "accessInfo": {
+          "country": "JP",
+          "viewability": "PARTIAL",
+          "embeddable": true,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": true,
+            "acsTokenLink": "http://books.google.co.jp/books/download/%E3%83%9F%E3%82%B9%E3%83%86%E3%83%AA%E3%81%A8%E8%A8%80%E3%81%86%E5%8B%BF%E3%82%8C_%EF%BC%95-sample-epub.acsm?id=Al6rDwAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+          },
+          "pdf": {
+            "isAvailable": true,
+            "acsTokenLink": "http://books.google.co.jp/books/download/%E3%83%9F%E3%82%B9%E3%83%86%E3%83%AA%E3%81%A8%E8%A8%80%E3%81%86%E5%8B%BF%E3%82%8C_%EF%BC%95-sample-pdf.acsm?id=Al6rDwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=Al6rDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "SAMPLE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "話題沸騰シリーズ 新章突入！ 坂で転がり落ち、検査入院することになった整。 その病院で出会った謎の美少女・ライカの言葉に導かれて動く内に、 ..."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "eYAptAEACAAJ",
+        "etag": "uy80ufDs1dQ",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/eYAptAEACAAJ",
+        "volumeInfo": {
+          "title": "柿原徹也パーソナルBOOK んで、今日本だすの",
+          "subtitle": "",
+          "authors": ["柿原徹也"],
+          "publishedDate": "2017-09",
+          "description": "柿原徹也、その旅の軌跡。「ボイスアニメージュ」の連載企画「んで、今日何すんの?」全12回に、未公開カットや夏気分満載の新規撮り下ろしグラビアを収録!柿原徹也×入江玲於奈×西山宏太朗バーベキュー座談会、Twitterで募集した50の質問も♪",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_10",
+              "identifier": "4198644675"
+            },
+            {
+              "type": "ISBN_13",
+              "identifier": "9784198644673"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": false
+          },
+          "pageCount": 93,
+          "printType": "BOOK",
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "preview-1.0.0",
+          "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=eYAptAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=eYAptAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          },
+          "language": "ja",
+          "previewLink": "http://books.google.co.jp/books?id=eYAptAEACAAJ&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&cd=5&source=gbs_api",
+          "infoLink": "http://books.google.co.jp/books?id=eYAptAEACAAJ&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/%E6%9F%BF%E5%8E%9F%E5%BE%B9%E4%B9%9F%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%ABBOOK_%E3%82%93%E3%81%A7.html?hl=&id=eYAptAEACAAJ"
+        },
+        "saleInfo": {
+          "country": "JP",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "JP",
+          "viewability": "NO_PAGES",
+          "embeddable": false,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": false
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=eYAptAEACAAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "NONE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "柿原徹也、その旅の軌跡。「ボイスアニメージュ」の連載企画「んで、今日何すんの?」全12回に、未公開カットや夏気分満載の新規撮り下ろしグラビアを収録 ..."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "ESprDwAAQBAJ",
+        "etag": "KPBVNZffG1c",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/ESprDwAAQBAJ",
+        "volumeInfo": {
+          "title": "図書館の殺人",
+          "authors": ["青崎有吾"],
+          "publisher": "東京創元社",
+          "publishedDate": "2018-09-14",
+          "description": "本格度、青春度、マシマシ！ 本で撲殺された被害者が残したダイイングメッセージ “駄目人間”裏染天馬が導き出す怒濤の推理 9月の朝、風ヶ丘図書館の開架エリアで死体が発見された。被害者は常連利用者の男子大学生。閉館中の館内に忍び込み、山田風太郎の『人間臨終図巻』で何者かに撲殺されたらしい。現場にはなんと、二つの奇妙なダイイングメッセージが残されていた！ 警察に呼び出された裏染天馬は独自の捜査を進め、一冊の本と一人の少女の存在に辿り着く。一方、風ヶ丘高校では期末テストにまつわる騒動が勃発。袴田柚乃たちは事件とテストの両方に振り回されることになり……。ロジカルな推理と、巧みなプロットで読者を魅了する〈裏染天馬シリーズ〉第4弾。 解説＝佐々木敦",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_13",
+              "identifier": "9784488443146"
+            },
+            {
+              "type": "ISBN_10",
+              "identifier": "4488443141"
+            }
+          ],
+          "readingModes": {
+            "text": true,
+            "image": true
+          },
+          "pageCount": 452,
+          "printType": "BOOK",
+          "categories": ["Fiction"],
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": true,
+          "contentVersion": "1.1.2.0.preview.3",
+          "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=ESprDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=ESprDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+          },
+          "language": "ja",
+          "previewLink": "http://books.google.co.jp/books?id=ESprDwAAQBAJ&printsec=frontcover&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&cd=6&source=gbs_api",
+          "infoLink": "https://play.google.com/store/books/details?id=ESprDwAAQBAJ&source=gbs_api",
+          "canonicalVolumeLink": "https://play.google.com/store/books/details?id=ESprDwAAQBAJ"
+        },
+        "saleInfo": {
+          "country": "JP",
+          "saleability": "FOR_SALE",
+          "isEbook": true,
+          "listPrice": {
+            "amount": 866.0,
+            "currencyCode": "JPY"
+          },
+          "retailPrice": {
+            "amount": 779.0,
+            "currencyCode": "JPY"
+          },
+          "buyLink": "https://play.google.com/store/books/details?id=ESprDwAAQBAJ&rdid=book-ESprDwAAQBAJ&rdot=1&source=gbs_api",
+          "offers": [
+            {
+              "finskyOfferType": 1,
+              "listPrice": {
+                "amountInMicros": 8.66e8,
+                "currencyCode": "JPY"
+              },
+              "retailPrice": {
+                "amountInMicros": 7.79e8,
+                "currencyCode": "JPY"
+              }
+            }
+          ]
+        },
+        "accessInfo": {
+          "country": "JP",
+          "viewability": "PARTIAL",
+          "embeddable": true,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": true,
+            "acsTokenLink": "http://books.google.co.jp/books/download/%E5%9B%B3%E6%9B%B8%E9%A4%A8%E3%81%AE%E6%AE%BA%E4%BA%BA-sample-epub.acsm?id=ESprDwAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+          },
+          "pdf": {
+            "isAvailable": true,
+            "acsTokenLink": "http://books.google.co.jp/books/download/%E5%9B%B3%E6%9B%B8%E9%A4%A8%E3%81%AE%E6%AE%BA%E4%BA%BA-sample-pdf.acsm?id=ESprDwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=ESprDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "SAMPLE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "本格度、青春度、マシマシ！ 本で撲殺された被害者が残したダイイングメッセージ “駄目人間”裏染天馬が導き出す怒濤の推理 ..."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "uhMargEACAAJ",
+        "etag": "eSlEerb1sIY",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/uhMargEACAAJ",
+        "volumeInfo": {
+          "title": "虚像の道化師",
+          "authors": ["東野圭吾"],
+          "publishedDate": "2015-03-10",
+          "description": "ビル5階にある新興宗教の道場から、信者の男が転落死した。男は何かから逃れるように勝手に窓から飛び降りた様子だったが、教祖は自分が念を送って落としたと自首してきた。教祖は本当にその力を持っているのか、そして湯川はからくりを見破ることができるのか(「幻惑す」)。ボリューム満点、7編収録の文庫オリジナル編集。",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_10",
+              "identifier": "4167903113"
+            },
+            {
+              "type": "ISBN_13",
+              "identifier": "9784167903114"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": false
+          },
+          "pageCount": 475,
+          "printType": "BOOK",
+          "categories": ["Japanese fiction"],
+          "averageRating": 4.0,
+          "ratingsCount": 2,
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "preview-1.0.0",
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=uhMargEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=uhMargEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          },
+          "language": "ja",
+          "previewLink": "http://books.google.co.jp/books?id=uhMargEACAAJ&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&cd=7&source=gbs_api",
+          "infoLink": "http://books.google.co.jp/books?id=uhMargEACAAJ&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/%E8%99%9A%E5%83%8F%E3%81%AE%E9%81%93%E5%8C%96%E5%B8%AB.html?hl=&id=uhMargEACAAJ"
+        },
+        "saleInfo": {
+          "country": "JP",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "JP",
+          "viewability": "NO_PAGES",
+          "embeddable": false,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": false
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=uhMargEACAAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "NONE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "ビル5階にある新興宗教の道場から、信者の男が転落死した。男は何かから逃れるように勝手に窓から飛び降りた様子だったが、教祖は自分が念を送って落としたと自首してきた ..."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "Ol3qMgEACAAJ",
+        "etag": "H0nXADpgLB4",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/Ol3qMgEACAAJ",
+        "volumeInfo": {
+          "title": "禁断の魔術",
+          "authors": ["東野圭吾"],
+          "publishedDate": "2012-10",
+          "description": "湯川が殺人を?「自業自得だ。教え子に正しく科学を教えてやれなかったことに対する罰だ」。ガリレオシリーズ初の完全書き下ろし。",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_10",
+              "identifier": "4163816909"
+            },
+            {
+              "type": "ISBN_13",
+              "identifier": "9784163816906"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": false
+          },
+          "pageCount": 327,
+          "printType": "BOOK",
+          "categories": ["Criminology investigation"],
+          "averageRating": 3.5,
+          "ratingsCount": 4,
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "preview-1.0.0",
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=Ol3qMgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=Ol3qMgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          },
+          "language": "ja",
+          "previewLink": "http://books.google.co.jp/books?id=Ol3qMgEACAAJ&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&cd=8&source=gbs_api",
+          "infoLink": "http://books.google.co.jp/books?id=Ol3qMgEACAAJ&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/%E7%A6%81%E6%96%AD%E3%81%AE%E9%AD%94%E8%A1%93.html?hl=&id=Ol3qMgEACAAJ"
+        },
+        "saleInfo": {
+          "country": "JP",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "JP",
+          "viewability": "NO_PAGES",
+          "embeddable": false,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": false
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=Ol3qMgEACAAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "NONE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "湯川が殺人を?「自業自得だ。教え子に正しく科学を教えてやれなかったことに対する罰だ」。ガリレオシリーズ初の完全書き下ろし。"
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "6-HMDwAAQBAJ",
+        "etag": "XkkSle5lU5c",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/6-HMDwAAQBAJ",
+        "volumeInfo": {
+          "title": "わたしの家族の明治日本",
+          "authors": ["ジョアンナ・シェルトン"],
+          "publisher": "文藝春秋",
+          "publishedDate": "2018-10-11",
+          "description": "いまから140年前、ひとりのアメリカ人宣教師が海を渡って日本にやってきた。 トーマス・セロン・アレクサンダー、27歳。通称トム。 西南戦争が終わった年の秋、トムは横浜港に降り立った。傍らには、半年前に結婚した妻・エマがいた。 トムは毎朝日本語の勉強を日課とし、東京、大阪など大都市から九州の各地に赴任。多くの独立自給教会設立に尽くす。 西南戦争で負傷した兵士や、板垣退助の要請で自由民権運動の志士たちにキリスト教の教えを説き、明治学院大学、東京女子大学、同志社大学、女子学院など、今日まで続く日本の高等教育を支えた学校の設立に携った。迫害、病気、貧困に直面しながらも、多くの人びとの命にふれ影響を与え、療養先のハワイで52歳で亡くなった。 そのころの日本はイギリスと同盟を結び、世界の列強と肩を並べるほどのアジアの強国となっていた。 トムの生きた“明治という時代”とはどんな世界だったのだろうか——。 最年少、女性で初めてOECDのナンバーツーである事務次長を務めた著者の曽祖父の一代記。誰よりも日本を愛したアメリカ人の物語。",
+          "industryIdentifiers": [
+            {
+              "type": "OTHER",
+              "identifier": "PKEY:1639091100000000000F"
+            }
+          ],
+          "readingModes": {
+            "text": true,
+            "image": true
+          },
+          "pageCount": 288,
+          "printType": "BOOK",
+          "categories": ["Biography & Autobiography"],
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "1.1.1.0.preview.3",
+          "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=6-HMDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=6-HMDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+          },
+          "language": "ja",
+          "previewLink": "http://books.google.co.jp/books?id=6-HMDwAAQBAJ&printsec=frontcover&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&cd=9&source=gbs_api",
+          "infoLink": "https://play.google.com/store/books/details?id=6-HMDwAAQBAJ&source=gbs_api",
+          "canonicalVolumeLink": "https://play.google.com/store/books/details?id=6-HMDwAAQBAJ"
+        },
+        "saleInfo": {
+          "country": "JP",
+          "saleability": "FOR_SALE",
+          "isEbook": true,
+          "listPrice": {
+            "amount": 1834.0,
+            "currencyCode": "JPY"
+          },
+          "retailPrice": {
+            "amount": 1834.0,
+            "currencyCode": "JPY"
+          },
+          "buyLink": "https://play.google.com/store/books/details?id=6-HMDwAAQBAJ&rdid=book-6-HMDwAAQBAJ&rdot=1&source=gbs_api",
+          "offers": [
+            {
+              "finskyOfferType": 1,
+              "listPrice": {
+                "amountInMicros": 1.834e9,
+                "currencyCode": "JPY"
+              },
+              "retailPrice": {
+                "amountInMicros": 1.834e9,
+                "currencyCode": "JPY"
+              }
+            }
+          ]
+        },
+        "accessInfo": {
+          "country": "JP",
+          "viewability": "PARTIAL",
+          "embeddable": true,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": true,
+            "acsTokenLink": "http://books.google.co.jp/books/download/%E3%82%8F%E3%81%9F%E3%81%97%E3%81%AE%E5%AE%B6%E6%97%8F%E3%81%AE%E6%98%8E%E6%B2%BB%E6%97%A5%E6%9C%AC-sample-epub.acsm?id=6-HMDwAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+          },
+          "pdf": {
+            "isAvailable": true,
+            "acsTokenLink": "http://books.google.co.jp/books/download/%E3%82%8F%E3%81%9F%E3%81%97%E3%81%AE%E5%AE%B6%E6%97%8F%E3%81%AE%E6%98%8E%E6%B2%BB%E6%97%A5%E6%9C%AC-sample-pdf.acsm?id=6-HMDwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=6-HMDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "SAMPLE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "いまから140年前、ひとりのアメリカ人宣教師が海を渡って日本にやってきた。 トーマス・セロン・アレクサンダー、27歳。通称トム。 ..."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "d-2uAAAACAAJ",
+        "etag": "KVFH5CpVXl0",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/d-2uAAAACAAJ",
+        "volumeInfo": {
+          "title": "予知夢",
+          "authors": ["東野圭吾"],
+          "publishedDate": "2000-06",
+          "description": "君が生まれる前から僕たちが結ばれることは決まっていた。十六歳の少女の部屋に男が侵入した。十七年前に男が見たという夢は、果たして妄想なのか。",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_10",
+              "identifier": "4163192905"
+            },
+            {
+              "type": "ISBN_13",
+              "identifier": "9784163192901"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": false
+          },
+          "pageCount": 238,
+          "printType": "BOOK",
+          "averageRating": 4.0,
+          "ratingsCount": 2,
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "preview-1.0.0",
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=d-2uAAAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=d-2uAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          },
+          "language": "ja",
+          "previewLink": "http://books.google.co.jp/books?id=d-2uAAAACAAJ&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&cd=10&source=gbs_api",
+          "infoLink": "http://books.google.co.jp/books?id=d-2uAAAACAAJ&dq=%E6%B2%88%E9%BB%99%E3%81%AE%E3%83%91%E3%83%AC%E3%83%BC%E3%83%89&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/%E4%BA%88%E7%9F%A5%E5%A4%A2.html?hl=&id=d-2uAAAACAAJ"
+        },
+        "saleInfo": {
+          "country": "JP",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "JP",
+          "viewability": "NO_PAGES",
+          "embeddable": false,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": false
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=d-2uAAAACAAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "NONE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "君が生まれる前から僕たちが結ばれることは決まっていた。十六歳の少女の部屋に男が侵入した。十七年前に男が見たという夢は、果たして妄想なのか。"
+        }
+      }
+    ]
+  }
+}
