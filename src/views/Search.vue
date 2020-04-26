@@ -27,8 +27,7 @@ export default {
       this.results = [];
       if (searchWord.length === 0) return;
       try {
-        const url =
-          "https://www.googleapis.com/books/v1/volumes?q=" + searchWord;
+        const url = "https://www.googleapis.com/books/v1/volumes?q=" + searchWord;
         const res = await axios.get(encodeURI(url));
         // const res = await import("@/assets/sampleSearchResult.json");
         const items = res.data?.items;
@@ -41,10 +40,7 @@ export default {
             url: info?.imageLinks?.smallThumbnail,
             publishedDate: info?.publishedDate,
             pageCount: info?.pageCount,
-            description:
-              info?.description < 100
-                ? info?.description
-                : info?.description?.substr(0, 69) + "..."
+            description: info?.description < 100 ? info?.description : info?.description?.substr(0, 69) + "..."
           });
         }
       } catch (error) {

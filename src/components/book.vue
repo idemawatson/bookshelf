@@ -8,12 +8,8 @@
         <div class="book-detail">
           <div class="book-title">{{ title }}</div>
           <div><span class="detail-caption">著者:</span> {{ authors }}</div>
-          <div>
-            <span class="detail-caption">発行日:</span> {{ publishedDate }}
-          </div>
-          <div>
-            <span class="detail-caption">ページ数:</span> {{ pageCount }}
-          </div>
+          <div><span class="detail-caption">発行日:</span> {{ publishedDate }}</div>
+          <div><span class="detail-caption">ページ数:</span> {{ pageCount }}</div>
           <div class="pt-1">{{ description }}</div>
         </div>
       </v-col>

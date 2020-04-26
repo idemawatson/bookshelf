@@ -1,14 +1,6 @@
 <template>
   <transition name="note">
-    <v-card
-      class="note"
-      v-if="show"
-      :color="color"
-      :class="leftBar"
-      raised
-      max-width="300"
-      @click="show = false"
-    >
+    <v-card class="note" v-if="show" :color="color" :class="leftBar" raised max-width="300" @click="show = false">
       <p class="ma-4" style="font-weight: bold; color: white;">{{ text }}</p>
     </v-card>
   </transition>

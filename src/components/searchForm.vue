@@ -2,22 +2,9 @@
   <v-card absolute color="rgba(76, 175, 80, 1.0)" id="searchBar" class="pa-3">
     <div class="app-title">Bookshelf</div>
     <form id="search-form" class="mt-1 mb-1">
-      <input
-        id="term-field"
-        class="pa-1 pl-4"
-        type="text"
-        v-model="searchWord"
-        placeholder="キーワードを入力"
-      />
-      <v-icon medium class="term-clear" @click="searchWord = ''"
-        >mdi-close</v-icon
-      >
-      <input
-        type="button"
-        id="search-btn"
-        value="検索"
-        @click="$emit('search', searchWord)"
-      />
+      <input id="term-field" class="pa-1 pl-4" type="text" v-model="searchWord" placeholder="キーワードを入力" />
+      <v-icon medium class="term-clear" @click="searchWord = ''">mdi-close</v-icon>
+      <input type="button" id="search-btn" value="検索" @click="$emit('search', searchWord)" />
     </form>
   </v-card>
 </template>
