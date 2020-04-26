@@ -1,5 +1,5 @@
 <template>
-  <v-card absolute color="rgba(76, 175, 80, 1.0)" id="searchBar" class="pa-3">
+  <v-card absolute color="primary" id="searchBar" class="pa-3">
     <div class="app-title">Bookshelf</div>
     <form id="search-form" class="mt-1 mb-1">
       <input id="term-field" class="pa-1 pl-4" type="text" v-model="searchWord" placeholder="キーワードを入力" />

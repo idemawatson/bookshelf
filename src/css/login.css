@@ -8,12 +8,22 @@
 .white-text {
   color: white;
 }
-#logo-card {
+.center-card {
   position: absolute;
   top: 40%;
   left: 50%;
   transform-origin: 0 0 0;
   transform: translate(-50%, -50%);
+  width: 70%;
+}
+.card-title {
+  display: flex; 
+  justify-content: space-between;
+}
+.card-title div {
+  font-weight: bold;
+  font-size: 24px;
+  color: var(--gray-color);
 }
 .first-btn {
   position: absolute;

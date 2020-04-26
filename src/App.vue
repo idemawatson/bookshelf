@@ -19,6 +19,7 @@ export default {
   --contents-color: rgba(76, 175, 80, 1);
   --white-color: rgba(242, 242, 242, 1);
   --dark-color: rgba(92, 115, 93, 1);
+  --gray-color: rgba(115, 115, 115, 1);
 }
 .app-top {
   font-size: 16px;
