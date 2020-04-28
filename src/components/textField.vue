@@ -1,6 +1,7 @@
 <template>
   <v-text-field
     clearable
+    :id="label"
     :value="value"
     :rules="rules"
     :label="label"

@@ -4,10 +4,17 @@ const functions = require("firebase-functions");
 admin.initializeApp(functions.config().firebase);
 
 let db = admin.firestore();
+exports.addUser = functions.https.onCall(async (data, context) => {
+  await db.collection("user").add({
+    name: data.name,
+    id: data.uid
+  });
+  console.log(context);
+});
+
 exports.getBooks = functions.https.onCall(async (data, context) => {
-  const bookRef = db.collection("book");
   try {
-    const snapshot = await bookRef.get();
+    const snapshot = await db.collection("book").get();
     let ret = [];
     snapshot.forEach(doc => {
       ret.push(doc.data());

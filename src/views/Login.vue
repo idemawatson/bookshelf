@@ -18,6 +18,7 @@
           <v-form ref="form">
             <textField label="E-mail" :rules="emailRules" v-model="email"></textField>
             <textField label="password" :rules="passwordRules" v-model="password" counter="8"></textField>
+            <textField label="userName" :rules="nameRules" v-model="userName" counter="8"></textField>
             <v-btn small raised color="accent" class="mt-3" @click="signUp">Go</v-btn>
           </v-form>
         </v-card-text>
@@ -31,6 +32,7 @@
           <v-form ref="form">
             <textField label="E-mail" :rules="emailRules" v-model="email"></textField>
             <textField label="password" :rules="passwordRules" v-model="password"></textField>
+            <textField label="userName" :rules="nameRules" v-model="userName" counter="8"></textField>
             <v-btn small raised color="accent" class="mt-3" @click="login">Go</v-btn>
           </v-form>
         </v-card-text>
@@ -62,12 +64,17 @@ export default {
   data: () => ({
     email: "",
     password: "",
-    emailRules: [v => !!v || "メールアドレスは必須です", v => (v && v.indexOf("@") > 0) || "無効なメールアドレスです"],
+    userName: "",
+    emailRules: [
+      v => !!v || "メールアドレスを入力してください",
+      v => (v && v.indexOf("@") > 0) || "無効なメールアドレスです"
+    ],
     passwordRules: [
-      v => !!v || "パスワードは必須です",
+      v => !!v || "パスワードを入力してください",
       v => /^[a-z\d]{0,20}$/i.test(v) || "パスワードは半角英数字のみ使用できます",
       v => (v && v.length >= 8) || "パスワードは8文字以上です"
     ],
+    nameRules: [v => !!v || "ユーザー名を入力してください", v => (v && v.length <= 8) || "ユーザー名は8文字以内です"],
     status: ""
   }),
 
@@ -75,8 +82,8 @@ export default {
     async signUp() {
       if (!this.$refs.form.validate()) return;
       try {
-        await auth.signUp(this.email, this.password);
-        this.$refs.note.success(`ユーザー登録: 完了\n引き続きログインしてください`);
+        await auth.signUp(this.email, this.password, this.userName);
+        this.$refs.note.success("ユーザー登録: 完了\n引き続きログインしてください");
         this.changeStatus("login");
       } catch (error) {
         this.$refs.note.error(error.message);

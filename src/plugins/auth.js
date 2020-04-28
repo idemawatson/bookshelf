@@ -1,8 +1,11 @@
 import firebase from "./firebase";
 
-const signUp = async (email, password) => {
+const signUp = async (email, password, name) => {
   try {
-    await firebase.auth().createUserWithEmailAndPassword(email, password);
+    const credential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+    const user = credential.user;
+    await user.updateProfile({ displayName: name });
+    await firebase.functions().httpsCallable("addUser")({ name: name, uid: user.uid });
   } catch (error) {
     const errorCode = error.code;
     let message = "";
@@ -17,7 +20,7 @@ const signUp = async (email, password) => {
         message = "パスワードの強度が不十分です";
         break;
       default:
-        message = "認証エラー";
+        message = "認証エラーが発生しました";
         break;
     }
     throw new Error(message);
@@ -26,7 +29,7 @@ const signUp = async (email, password) => {
 
 const login = async (email, password) => {
   try {
-    return await firebase.auth().signInWithEmailAndPassword(email, password);
+    await firebase.auth().signInWithEmailAndPassword(email, password);
   } catch (error) {
     const errorCode = error.code;
     let message = "";
