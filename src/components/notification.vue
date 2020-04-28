@@ -1,14 +1,11 @@
 <template>
   <transition name="note">
-    <v-card class="note" v-if="show" :color="color" :class="leftBar" raised max-width="300" @click="show = false">
+    <v-card class="note" v-if="show" :class="status + '-bar'" raised max-width="300" @click="show = false">
       <p class="ma-4" style="font-weight: bold; color: white;">{{ text }}</p>
     </v-card>
   </transition>
 </template>
 <script>
-const INFO_COLOR = "#81d4fa";
-const ERROR_COLOR = "#ff1744";
-const SUCCESS_COLOR = "#4CAF50";
 const INFO = "info";
 const SUCCESS = "success";
 const ERROR = "error";
@@ -17,42 +14,32 @@ export default {
   data: () => ({
     status: String,
     text: String,
-    color: String,
     show: false
   }),
   methods: {
     success(text) {
       this.status = SUCCESS;
       this.text = text;
-      this.color = SUCCESS_COLOR;
       this.showNote();
     },
     error(text) {
       this.status = ERROR;
       this.text = text;
-      this.color = ERROR_COLOR;
       this.showNote();
     },
     info(text) {
       this.status = INFO;
       this.text = text;
-      this.color = INFO_COLOR;
       this.showNote();
     },
     showNote() {
       this.show = true;
-      setTimeout(this.reset, 3000);
+      setTimeout(this.reset, 30000);
     },
     reset() {
       this.status = "";
       this.text = "";
-      this.color = "";
       this.show = false;
-    }
-  },
-  computed: {
-    leftBar: () => {
-      return this?.status + "_bar";
     }
   }
 };
@@ -63,14 +50,18 @@ export default {
   right: 3%;
   bottom: 3%;
   border-left: solid 15px;
+  white-space: pre-wrap;
 }
-.success_bar {
-  border-left-color: #2e7d32 !important;
+.success-bar {
+  background-color: var(--accent-color) !important;
+  border-left-color: #909432 !important;
 }
-.error_bar {
-  border-left-color: #d50000 !important;
+.error-bar {
+  background-color: var(--error-color) !important;
+  border-left-color: #c12f47 !important;
 }
-.info_bar {
+.info-bar {
+  background-color: var(--info-color) !important;
   border-left-color: #29b6f6 !important;
 }
 .note-enter-active,

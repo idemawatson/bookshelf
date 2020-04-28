@@ -11,8 +11,8 @@
 <script>
 export default {
   props: {
-    label: { type: String, required: true },
-    value: { type: String, required: true },
+    label: { type: String, required: true, default: "" },
+    value: { type: String, required: true, default: "" },
     rules: { type: Array },
     counter: { type: String }
   },

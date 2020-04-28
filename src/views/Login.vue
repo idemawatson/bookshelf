@@ -9,26 +9,30 @@
           </div>
         </v-card-text>
       </v-card>
-      <v-card v-if="status == 'login'" class="center-card" key="login" color="lighten">
-        <div class="card-title">
-          <v-card-title>Login</v-card-title>
-          <v-icon class="mr-3" large @click="reset">mdi-backspace</v-icon>
-        </div>
-        <v-card-text>
-          <textField label="E-mail" :rules="emailRules" v-model="email"></textField>
-          <textField label="password" :rules="passwordRules" v-model="password"></textField>
-          <v-btn small raised color="accent" @click="signUp">Go</v-btn>
-        </v-card-text>
-      </v-card>
       <v-card v-if="status == 'signUp'" class="center-card" key="login" color="lighten">
         <div class="card-title">
           <v-card-title>Sign Up</v-card-title>
           <v-icon class="mr-3" large @click="reset">mdi-backspace</v-icon>
         </div>
         <v-card-text>
-          <textField label="E-mail" :rules="emailRules" v-model="email"></textField>
-          <textField label="password" :rules="passwordRules" v-model="password" counter="8"></textField>
-          <v-btn small raised color="accent" @click="login">Go</v-btn>
+          <v-form ref="form">
+            <textField label="E-mail" :rules="emailRules" v-model="email"></textField>
+            <textField label="password" :rules="passwordRules" v-model="password" counter="8"></textField>
+            <v-btn small raised color="accent" class="mt-3" @click="signUp">Go</v-btn>
+          </v-form>
+        </v-card-text>
+      </v-card>
+      <v-card v-if="status == 'login'" class="center-card" key="login" color="lighten">
+        <div class="card-title">
+          <v-card-title>Login</v-card-title>
+          <v-icon class="mr-3" large @click="reset">mdi-backspace</v-icon>
+        </div>
+        <v-card-text>
+          <v-form ref="form">
+            <textField label="E-mail" :rules="emailRules" v-model="email"></textField>
+            <textField label="password" :rules="passwordRules" v-model="password"></textField>
+            <v-btn small raised color="accent" class="mt-3" @click="login">Go</v-btn>
+          </v-form>
         </v-card-text>
       </v-card>
     </transition>
@@ -48,7 +52,7 @@
 <script>
 import Note from "@/components/notification";
 import textField from "@/components/textField";
-import firebase from "@/plugins/firebase";
+import * as auth from "@/plugins/auth";
 
 export default {
   components: {
@@ -59,23 +63,33 @@ export default {
     email: "",
     password: "",
     emailRules: [v => !!v || "メールアドレスは必須です", v => (v && v.indexOf("@") > 0) || "無効なメールアドレスです"],
-    passwordRules: [v => !!v || "パスワードは必須です", v => (v && v.length >= 8) || "パスワードは8文字以上です"],
+    passwordRules: [
+      v => !!v || "パスワードは必須です",
+      v => /^[a-z\d]{0,20}$/i.test(v) || "パスワードは半角英数字のみ使用できます",
+      v => (v && v.length >= 8) || "パスワードは8文字以上です"
+    ],
     status: ""
   }),
 
   methods: {
     async signUp() {
+      if (!this.$refs.form.validate()) return;
       try {
-        await firebase.auth().createUserWithEmailAndPassword(this.email, this.password);
-        this.$refs.note.success("`ユーザー登録: ${ this.email }`");
+        await auth.signUp(this.email, this.password);
+        this.$refs.note.success(`ユーザー登録: 完了\n引き続きログインしてください`);
         this.changeStatus("login");
       } catch (error) {
-        console.error(error);
-        this.$refs.note.error("ユーザー登録に失敗しました。");
+        this.$refs.note.error(error.message);
       }
     },
-    login() {
-      console.log("login");
+    async login() {
+      if (!this.$refs.form.validate()) return;
+      try {
+        await auth.login(this.email, this.password);
+        this.$router.push("/home");
+      } catch (error) {
+        this.$refs.note.error(error.message);
+      }
     },
     reset() {
       this.email = "";
@@ -83,8 +97,12 @@ export default {
       this.status = "";
     },
     changeStatus(status) {
+      if (this.status == status) return;
       this.reset();
       this.status = status;
+      if (this.$refs.form) {
+        this.$refs.form.reset();
+      }
     }
   }
 };
