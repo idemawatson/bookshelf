@@ -6,6 +6,7 @@
     </v-card>
     <Book v-for="r in results" :key="r.index" v-bind="r"></Book>
     <Note ref="note"></Note>
+    <Loading :active.sync="loading" :is-full-page="true" color="#4caf50"></Loading>
   </div>
 </template>
 <script>
@@ -13,20 +14,25 @@ import searchForm from "@/components/searchForm";
 import Note from "@/components/notification";
 import Book from "@/components/book";
 import axios from "axios";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 export default {
   components: {
     searchForm,
     Note,
-    Book
+    Book,
+    Loading
   },
   data: () => ({
-    results: []
+    results: [],
+    loading: false
   }),
   methods: {
     async search(searchWord) {
       this.results = [];
       if (searchWord.length === 0) return;
+      this.loading = true;
       try {
         const url = "https://www.googleapis.com/books/v1/volumes?q=" + searchWord;
         const res = await axios.get(encodeURI(url));
@@ -44,9 +50,11 @@ export default {
             description: info?.description < 100 ? info?.description : info?.description?.substr(0, 69) + "..."
           });
         }
+        this.loading = false;
       } catch (error) {
-        this.$refs.note.error("通信エラーが発生しました。");
+        this.loading = false;
         console.log(error);
+        this.$refs.note.error("通信エラーが発生しました。");
       }
     }
   },
