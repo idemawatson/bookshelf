@@ -1,9 +1,10 @@
 <template>
   <div>
-    <div>
+    <v-card class="pb-3" :class="formPosition" flat color="lighten">
+      <h3 class="page-title pt-3 pb-3">書籍検索</h3>
       <searchForm @search="search"></searchForm>
-      <Book v-for="r in results" :key="r.index" v-bind="r"></Book>
-    </div>
+    </v-card>
+    <Book v-for="r in results" :key="r.index" v-bind="r"></Book>
     <Note ref="note"></Note>
   </div>
 </template>
@@ -48,6 +49,26 @@ export default {
         console.log(error);
       }
     }
+  },
+  computed: {
+    formPosition() {
+      if (this.results.length == 0) {
+        return "center-card";
+      }
+      return "";
+    }
   }
 };
 </script>
+<style scoped>
+.page-title {
+  text-align: center;
+  color: var(--gray-color);
+  letter-spacing: 0.1em;
+}
+.center-card {
+  position: absolute;
+  width: 100%;
+  top: 40%;
+}
+</style>

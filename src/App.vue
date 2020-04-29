@@ -1,14 +1,19 @@
 <template>
   <v-app class="app-top">
-    <v-content>
+    <v-content class="app-content">
+      <Header></Header>
       <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import Header from "@/components/header";
 export default {
   name: "App",
+  components: {
+    Header
+  },
   data: () => ({
     //
   })
@@ -26,5 +31,8 @@ export default {
 }
 .app-top {
   font-size: 16px;
+}
+.app-content {
+  background: var(--white-color);
 }
 </style>

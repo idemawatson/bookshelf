@@ -32,7 +32,6 @@
           <v-form ref="form">
             <textField label="E-mail" :rules="emailRules" v-model="email"></textField>
             <textField label="password" :rules="passwordRules" v-model="password"></textField>
-            <textField label="userName" :rules="nameRules" v-model="userName" counter="8"></textField>
             <v-btn small raised color="accent" class="mt-3" @click="login">Go</v-btn>
           </v-form>
         </v-card-text>
@@ -54,7 +53,9 @@
 <script>
 import Note from "@/components/notification";
 import textField from "@/components/textField";
+import { mapMutations } from "vuex";
 import * as auth from "@/plugins/auth";
+import { SET_NAME } from "@/store/type";
 
 export default {
   components: {
@@ -79,6 +80,9 @@ export default {
   }),
 
   methods: {
+    ...mapMutations({
+      SET_NAME
+    }),
     async signUp() {
       if (!this.$refs.form.validate()) return;
       try {
@@ -92,7 +96,8 @@ export default {
     async login() {
       if (!this.$refs.form.validate()) return;
       try {
-        await auth.login(this.email, this.password);
+        const userName = await auth.login(this.email, this.password);
+        this.SET_NAME({ userName: userName });
         this.$router.push("/home");
       } catch (error) {
         this.$refs.note.error(error.message);

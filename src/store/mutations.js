@@ -1,6 +1,6 @@
+import * as types from "./type";
 export default {
-  setToken(state, data) {
-    state.token = data.token;
-    state.userName = data.userName;
+  [types.SET_NAME](state, payload) {
+    state.userName = payload.userName;
   }
 };

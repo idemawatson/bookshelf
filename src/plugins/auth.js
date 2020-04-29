@@ -29,7 +29,8 @@ const signUp = async (email, password, name) => {
 
 const login = async (email, password) => {
   try {
-    await firebase.auth().signInWithEmailAndPassword(email, password);
+    const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+    return userCredential.user.displayName;
   } catch (error) {
     const errorCode = error.code;
     let message = "";

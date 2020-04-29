@@ -13,8 +13,12 @@ exports.addUser = functions.https.onCall(async (data, context) => {
 });
 
 exports.getBooks = functions.https.onCall(async (data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError("unauthenticated", e.message, e);
+  }
   try {
-    const snapshot = await db.collection("book").get();
+    const bookRef = db.collection("book");
+    const snapshot = await bookRef.where("user", "==", data.uid).get();
     let ret = [];
     snapshot.forEach(doc => {
       ret.push(doc.data());

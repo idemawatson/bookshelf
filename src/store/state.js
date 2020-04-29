@@ -1,4 +1,3 @@
 export default {
-  token: undefined,
-  userName: ""
+  userName: String
 };
