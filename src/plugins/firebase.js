@@ -1,4 +1,6 @@
 import firebase from "firebase";
+import { SET_USER } from "@/store/type";
+import store from "@/store";
 
 const firebaseConfig = {
   apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
@@ -11,4 +13,11 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    store.commit(SET_USER, user);
+  } else {
+    store.commit(SET_USER, null);
+  }
+});
 export default firebase;

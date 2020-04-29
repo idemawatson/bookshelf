@@ -4,6 +4,7 @@ import Login from "@/views/Login.vue";
 import Home from "@/views/Home.vue";
 import Error from "@/views/Error.vue";
 import Search from "@/views/Search.vue";
+import store from "@/store";
 import firebase from "@/plugins/firebase";
 
 Vue.use(VueRouter);
@@ -45,7 +46,12 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const requiredAuth = to.matched.some(record => record.meta.requiredAuth);
-  if (requiredAuth) {
+  const user = store.state.user;
+  if (to.path === "/login" && user !== null) {
+    next({
+      path: "/home"
+    });
+  } else if (requiredAuth) {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         next();

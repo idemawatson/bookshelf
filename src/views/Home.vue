@@ -2,13 +2,7 @@
   <v-container>
     <v-card v-for="b in books" :key="b.index">{{ b }}</v-card>
     <Note ref="note"></Note>
-    <Loading
-      :active.sync="loading"
-      :is-full-page="true"
-      color="#f2f2f2"
-      background-color="#4caf50"
-      :opacity="1"
-    ></Loading>
+    <Loading :active.sync="loading" :is-full-page="true" color="#4caf50"></Loading>
   </v-container>
 </template>
 <script>

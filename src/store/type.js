@@ -1,2 +1,2 @@
-const SET_NAME = "SET_NAME";
-export { SET_NAME };
+const SET_USER = "SET_USER";
+export { SET_USER };

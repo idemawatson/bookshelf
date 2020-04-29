@@ -48,19 +48,21 @@
       <v-btn rounded :outlined="status !== 'login'" x-large color="lighten" @click="changeStatus('login')">LOGIN</v-btn>
     </div>
     <Note ref="note"></Note>
+    <Loading :active.sync="loading" :is-full-page="true" color="#4caf50"></Loading>
   </v-container>
 </template>
 <script>
 import Note from "@/components/notification";
 import textField from "@/components/textField";
-import { mapMutations } from "vuex";
 import * as auth from "@/plugins/auth";
-import { SET_NAME } from "@/store/type";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 export default {
   components: {
     Note,
-    textField
+    textField,
+    Loading
   },
   data: () => ({
     email: "",
@@ -76,30 +78,33 @@ export default {
       v => (v && v.length >= 8) || "パスワードは8文字以上です"
     ],
     nameRules: [v => !!v || "ユーザー名を入力してください", v => (v && v.length <= 8) || "ユーザー名は8文字以内です"],
-    status: ""
+    status: "",
+    loading: false
   }),
 
   methods: {
-    ...mapMutations({
-      SET_NAME
-    }),
     async signUp() {
       if (!this.$refs.form.validate()) return;
+      this.loading = true;
       try {
         await auth.signUp(this.email, this.password, this.userName);
+        this.loading = false;
         this.$refs.note.success("ユーザー登録: 完了\n引き続きログインしてください");
         this.changeStatus("login");
       } catch (error) {
+        this.loading = false;
         this.$refs.note.error(error.message);
       }
     },
     async login() {
       if (!this.$refs.form.validate()) return;
+      this.loading = true;
       try {
-        const userName = await auth.login(this.email, this.password);
-        this.SET_NAME({ userName: userName });
+        await auth.login(this.email, this.password);
+        this.loading = false;
         this.$router.push("/home");
       } catch (error) {
+        this.loading = false;
         this.$refs.note.error(error.message);
       }
     },

@@ -1,3 +1,4 @@
 export default {
-  userName: String
+  userName: String,
+  user: Object
 };

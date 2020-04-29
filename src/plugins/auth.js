@@ -55,4 +55,12 @@ const login = async (email, password) => {
   }
 };
 
-export { signUp, login };
+const signOut = async () => {
+  try {
+    firebase.auth().signOut();
+  } catch (error) {
+    throw new Error("エラーが発生しました");
+  }
+};
+
+export { signUp, login, signOut };

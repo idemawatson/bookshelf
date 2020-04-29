@@ -1,7 +1,7 @@
 <template>
   <v-app class="app-top">
     <v-content class="app-content">
-      <Header></Header>
+      <Header v-if="!isLoginView"></Header>
       <router-view></router-view>
     </v-content>
   </v-app>
@@ -14,9 +14,11 @@ export default {
   components: {
     Header
   },
-  data: () => ({
-    //
-  })
+  computed: {
+    isLoginView() {
+      return this.$route.path === "/login";
+    }
+  }
 };
 </script>
 <style>

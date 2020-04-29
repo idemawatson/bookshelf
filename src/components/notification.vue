@@ -34,7 +34,7 @@ export default {
     },
     showNote() {
       this.show = true;
-      setTimeout(this.reset, 30000);
+      setTimeout(this.reset, 5000);
     },
     reset() {
       this.status = "";
