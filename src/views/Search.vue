@@ -4,7 +4,11 @@
       <h3 class="page-title pt-3 pb-3">書籍検索</h3>
       <searchForm @search="search"></searchForm>
     </v-card>
-    <Book v-for="r in results" :key="r.index" v-bind="r"></Book>
+    <Book v-for="r in results" :key="r.index" v-bind="r">
+      <template v-slot:activator>
+        <v-btn @click="addBookToShelf(r)" class="mt-1 mb-2" small dark color="primary">本棚へ</v-btn>
+      </template>
+    </Book>
     <Note ref="note"></Note>
     <Loading :active.sync="loading" :is-full-page="true" color="#4caf50"></Loading>
   </div>
@@ -13,9 +17,10 @@
 import searchForm from "@/components/searchForm";
 import Note from "@/components/notification";
 import Book from "@/components/book";
-import axios from "axios";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
+import axios from "axios";
+import firebase from "@/plugins/firebase";
 
 export default {
   components: {
@@ -42,6 +47,7 @@ export default {
           const info = item.volumeInfo;
           if (!info?.description) continue;
           this.results.push({
+            id: item.id,
             title: info?.title,
             authors: info?.authors?.join(","),
             url: info?.imageLinks?.smallThumbnail,
@@ -54,7 +60,35 @@ export default {
       } catch (error) {
         this.loading = false;
         console.log(error);
-        this.$refs.note.error("通信エラーが発生しました。");
+        this.$refs.note.error("通信エラーが発生しました");
+      }
+    },
+    async addBookToShelf(book) {
+      this.loading = true;
+      book.uid = this.$store.state.user.uid;
+      const addBookToShelf = firebase.functions().httpsCallable("addBookToShelf");
+      try {
+        await addBookToShelf(book);
+        this.loading = false;
+        this.$refs.note.info("本棚に追加しました");
+      } catch (error) {
+        console.log(JSON.stringify(error));
+        let e = "";
+        switch (error.code) {
+          case "unauthorized":
+            this.$router.push("/error");
+            return;
+          case "invalid-argument":
+            e = "不正なリクエストです";
+            break;
+          case "already-exists":
+            e = "既に登録済みです";
+            break;
+          default:
+            e = "通信エラーが発生しました";
+        }
+        this.loading = false;
+        this.$refs.note.error(e);
       }
     }
   },

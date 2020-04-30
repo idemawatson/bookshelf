@@ -8,8 +8,15 @@
         <div class="book-detail">
           <div class="book-title">{{ title }}</div>
           <div><span class="detail-caption">著者:</span> {{ authors }}</div>
-          <div><span class="detail-caption">発行日:</span> {{ publishedDate }}</div>
-          <div><span class="detail-caption">ページ数:</span> {{ pageCount }}</div>
+          <v-row>
+            <v-col cols="8" class="pt-0 pb-0 pr-0">
+              <div><span class="detail-caption">発行日:</span> {{ publishedDate }}</div>
+              <div><span class="detail-caption">ページ数:</span> {{ pageCount }}</div>
+            </v-col>
+            <v-col cols="4" class="pt-0 pb-0 pl-0">
+              <slot name="activator"></slot>
+            </v-col>
+          </v-row>
           <div class="pt-1">{{ description }}</div>
         </div>
       </v-col>

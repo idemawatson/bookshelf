@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app-bar app color="primary" dark>
-      <v-app-bar-nav-icon @click="$emit('openNav')"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click.stop="$emit('openNav')"></v-app-bar-nav-icon>
       <v-toolbar-title class="app-title">Bookshelf</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-icon @click="signOut">mdi-logout</v-icon>

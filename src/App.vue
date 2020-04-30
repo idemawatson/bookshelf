@@ -1,15 +1,15 @@
 <template>
   <v-app class="app-top">
     <v-content class="app-content">
-      <div v-if="!isLoginView">
+      <div v-if="needBar">
         <Header @openNav="drawer = true"></Header>
-        <v-navigation-drawer app v-model="drawer" dark color="primary">
+        <v-navigation-drawer app v-model="drawer" temporary dark color="primary">
           <v-list-item>
             <v-list-item-title class="app-title" style="text-align: left">
               Bookshelf
             </v-list-item-title>
             <v-btn icon>
-              <v-icon @click="drawer = false">mdi-chevron-left</v-icon>
+              <v-icon @click.stop="drawer = false">mdi-chevron-left</v-icon>
             </v-btn>
           </v-list-item>
           <v-divider />
@@ -44,33 +44,13 @@ export default {
     ]
   }),
   computed: {
-    isLoginView() {
-      return this.$route.path === "/login";
+    needBar() {
+      const fullViewList = ["/login", "/error"];
+      return !fullViewList.includes(this.$route.path);
     }
   }
 };
 </script>
 <style>
-:root {
-  --contents-color: rgba(76, 175, 80, 1);
-  --white-color: rgba(242, 242, 242, 1);
-  --dark-color: rgba(92, 115, 93, 1);
-  --gray-color: rgba(115, 115, 115, 1);
-  --accent-color: #acaf4c;
-  --error-color: #ff6977;
-  --info-color: #00a6ff;
-}
-.app-top {
-  font-size: 16px;
-}
-.app-content {
-  background: var(--white-color);
-}
-.app-title {
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--white-color);
-  letter-spacing: 0.1em;
-}
+@import url("~@/css/app.css");
 </style>

@@ -1,0 +1,22 @@
+:root {
+  --contents-color: rgba(76, 175, 80, 1);
+  --white-color: rgba(242, 242, 242, 1);
+  --dark-color: rgba(92, 115, 93, 1);
+  --gray-color: rgba(115, 115, 115, 1);
+  --accent-color: #acaf4c;
+  --error-color: #ff6977;
+  --info-color: #00a6ff;
+}
+.app-top {
+  font-size: 16px;
+}
+.app-content {
+  background: var(--white-color);
+}
+.app-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--white-color);
+  letter-spacing: 0.1em;
+}

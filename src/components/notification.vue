@@ -46,11 +46,12 @@ export default {
 </script>
 <style scoped>
 .note {
-  position: absolute;
+  position: fixed;
   right: 3%;
   bottom: 3%;
   border-left: solid 15px;
   white-space: pre-wrap;
+  z-index: 1;
 }
 .success-bar {
   background-color: var(--accent-color) !important;

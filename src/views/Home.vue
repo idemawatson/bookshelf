@@ -25,7 +25,7 @@ export default {
     this.loading = true;
     const getBooks = firebase.functions().httpsCallable("getBooks");
     try {
-      const response = await getBooks({ uid: firebase.auth().currentUser.uid });
+      const response = await getBooks({ uid: this.user.uid });
       this.books = response?.data?.body;
     } catch (error) {
       if (error.code == "unauthenticated") {
@@ -37,7 +37,7 @@ export default {
     this.loading = false;
   },
   computed: {
-    ...mapState(["token", "userName"])
+    ...mapState(["user"])
   },
   methods: {}
 };

@@ -29,3 +29,32 @@ exports.getBooks = functions.https.onCall(async (data, context) => {
     throw new functions.https.HttpsError("unknown", e.message, e);
   }
 });
+
+exports.addBookToShelf = functions.https.onCall(async (data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError("unauthenticated", e.message, e);
+  }
+  if (!data || !data.id) {
+    throw new functions.https.HttpsError("invalid-argument");
+  }
+  try {
+    const bookRef = db.collection("book");
+    const snapshot = await bookRef.where("id", "==", data.id).get();
+    if (!snapshot.empty) {
+      throw new functions.https.HttpsError("already-exists", "specified value is already exist.");
+    } else {
+      bookRef.add({
+        id: data.id,
+        user: data.uid,
+        title: data.title,
+        authors: data.authors,
+        url: data.url,
+        publishedDate: data.publishedDate,
+        pageCount: data.pageCount,
+        description: data.description
+      });
+    }
+  } catch (e) {
+    throw new functions.https.HttpsError(e.code || "unknown", e.message, e);
+  }
+});
