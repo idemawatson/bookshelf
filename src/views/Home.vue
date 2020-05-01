@@ -2,7 +2,18 @@
   <div class="background">
     <div class="page-title pt-3">{{ user.displayName }}の本棚</div>
     <v-container class="shelf-container pa-5 pt-0" fluid>
-      <v-carousel show-arrows-on-hover height="100%">
+      <v-card v-if="books.length === 0" flat color="lighten" class="pa-3 mt-3">
+        <v-card-text style="text-align: center; font-size: 16px; color: var(--gray-color);">
+          <div>書籍がまだありません。</div>
+          <div>書籍検索から追加してみましょう！</div>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" to="/search">書籍を追加する</v-btn>
+          <v-spacer></v-spacer>
+        </v-card-actions>
+      </v-card>
+      <v-carousel v-else show-arrows-on-hover height="100%">
         <v-carousel-item v-for="part in partializedBooks" :key="part.index">
           <v-row>
             <v-col cols="4" sm="3" ml="3" lg="2" xl="2" v-for="book in part" :key="book.index">
@@ -13,9 +24,9 @@
             </v-col>
           </v-row>
         </v-carousel-item>
-        <Note ref="note"></Note>
-        <Loading :active.sync="loading" :is-full-page="true" color="#4caf50"></Loading>
       </v-carousel>
+      <Note ref="note"></Note>
+      <Loading :active.sync="loading" :is-full-page="true" color="#4caf50" :opacity="1"></Loading>
     </v-container>
     <BookDetail ref="detail" :book="book" @update="update"></BookDetail>
   </div>
@@ -43,19 +54,20 @@ export default {
   }),
   async created() {
     this.loading = true;
-    const getBooks = firebase.functions().httpsCallable("getBooks");
+    // const getBooks = firebase.functions().httpsCallable("getBooks");
     try {
-      const response = await getBooks({ uid: this.user.uid });
+      // const response = await getBooks({ uid: this.user.uid });
       // const response = await import("@/assets/sampleShelf.json");
-      this.books = response?.data?.body;
+      // this.books = response?.data?.body;
+      this.loading = false;
     } catch (error) {
       if (error.code == "unauthenticated") {
         this.$router.push("/error");
       } else {
+        this.loading = false;
         this.$refs.note.error("エラーが発生しました");
       }
     }
-    this.loading = false;
   },
   computed: {
     ...mapState(["user"]),
