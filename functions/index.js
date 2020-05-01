@@ -108,7 +108,14 @@ exports.getUserInfo = functions.https.onCall(async (data, context) => {
       const calc = calcurateLevel(exp);
       let ret = {};
       userSnapshot.forEach(doc => {
-        ret = { ...doc.data(), ...calc, pageCount: exp, bookCount: bookSnapshot.size };
+        ret = {
+          ...doc.data(),
+          ...calc,
+          pageCount: exp,
+          bookCount: bookSnapshot.size,
+          beforeLevel: doc.data().level || 0
+        };
+        doc.ref.update({ level: calc.level });
       });
       return { body: ret };
     }

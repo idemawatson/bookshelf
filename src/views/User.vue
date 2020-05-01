@@ -30,6 +30,7 @@
       <Card title="読んだ本" :value="bookCount"></Card>
       <Card title="総読書量" :value="pageCount"></Card>
     </v-row>
+    <LevelUp ref="levelUp" :level="user.level" :beforeLevel="user.beforeLevel"></LevelUp>
     <Note ref="note"></Note>
     <Loading :active.sync="loading" :is-full-page="true" color="#4caf50" :opacity="1"></Loading>
   </v-container>
@@ -37,6 +38,7 @@
 <script>
 import firebase from "@/plugins/firebase";
 import Card from "@/components/profileCard";
+import LevelUp from "@/components/levelUpDialog";
 import Note from "@/components/notification";
 import Loading from "vue-loading-overlay";
 import code from "@/plugins/errorCode";
@@ -44,6 +46,7 @@ import code from "@/plugins/errorCode";
 export default {
   components: {
     Card,
+    LevelUp,
     Note,
     Loading
   },
@@ -67,6 +70,7 @@ export default {
       // const user = await import("@/assets/sampleUser.json");
       this.user = user.data?.body;
       this.loading = false;
+      if (this.user.beforeLevel < this.user.level) this.$refs.levelUp.open();
     } catch (error) {
       let e = "";
       console.log(error);
