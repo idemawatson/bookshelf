@@ -40,7 +40,8 @@ export default {
     drawer: false,
     menus: [
       { title: "本棚", icon: "mdi-home", url: "/home" },
-      { title: "書籍検索", icon: "mdi-magnify", url: "/search" }
+      { title: "書籍検索", icon: "mdi-magnify", url: "/search" },
+      { title: "プロフィール", icon: "mdi-account", url: "/user" }
     ]
   }),
   computed: {

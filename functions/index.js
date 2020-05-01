@@ -106,10 +106,10 @@ exports.getUserInfo = functions.https.onCall(async (data, context) => {
         exp += doc.data().pageCount;
       });
       const calc = calcurateLevel(exp);
+      let ret = {};
       userSnapshot.forEach(doc => {
-        ret = { ...doc.data(), ...calc };
+        ret = { ...doc.data(), ...calc, pageCount: exp, bookCount: bookSnapshot.size };
       });
-      ret.bookCount = bookSnapshot.size;
       return { body: ret };
     }
   } catch (e) {
@@ -134,6 +134,7 @@ const calcurateLevel = exp => {
   }
   return {
     progress: Math.floor((progress / standard) * 100),
+    rest: standard - progress,
     level: level
   };
 };
