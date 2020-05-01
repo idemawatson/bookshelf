@@ -1,0 +1,63 @@
+<template>
+  <v-row justify="center">
+    <v-dialog v-model="dialog">
+      <v-card>
+        <Book v-bind:book="{ ...book }"></Book>
+        <v-card-text class="pa-2">
+          <v-container class="pa-3 pt-0">
+            <v-textarea
+              v-model="book.comment"
+              :rules="commentRules"
+              class="pa-0"
+              counter="100"
+              rows="3"
+              clearable
+              placeholder="感想・コメント"
+            ></v-textarea>
+            <v-checkbox v-model="book.completed" class="ma-0" label="読んだ！"></v-checkbox>
+            <v-row justify="space-around" class="pa-2">
+              <v-btn color="primary" @click.stop="update">OK</v-btn>
+              <v-btn color="primary" @click.stop="close">CANCEL</v-btn>
+            </v-row>
+          </v-container>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+  </v-row>
+</template>
+<script>
+import Book from "@/components/book";
+
+export default {
+  components: {
+    Book
+  },
+  data: () => ({
+    dialog: false,
+    comment: "",
+    commentRules: [v => !v || (v && v.length <= 100) || "100文字を超えています"],
+    completed: false
+  }),
+  methods: {
+    open() {
+      this.dialog = true;
+    },
+    update() {
+      if (this.comment && this.comment > 100) return;
+      this.$emit("update", {
+        id: this.book.id,
+        uid: this.book.user,
+        comment: this.book.comment,
+        completed: this.book.completed
+      });
+      this.close();
+    },
+    close() {
+      this.dialog = false;
+    }
+  },
+  props: {
+    book: {}
+  }
+};
+</script>

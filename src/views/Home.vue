@@ -6,7 +6,7 @@
         <v-carousel-item v-for="part in partializedBooks" :key="part.index">
           <v-row>
             <v-col cols="4" sm="3" ml="3" lg="2" xl="2" v-for="book in part" :key="book.index">
-              <v-card color="lighten">
+              <v-card color="lighten" @click="openDetail(book)">
                 <v-img v-if="book.url" :src="book.url" aspect-ratio="0.8"></v-img>
                 <div v-else class="alternative-book">{{ book.title }}</div>
               </v-card>
@@ -17,30 +17,36 @@
         <Loading :active.sync="loading" :is-full-page="true" color="#4caf50"></Loading>
       </v-carousel>
     </v-container>
+    <BookDetail ref="detail" :book="book" @update="update"></BookDetail>
   </div>
 </template>
 <script>
 import { mapState } from "vuex";
-// import firebase from "@/plugins/firebase";
+import firebase from "@/plugins/firebase";
 import Note from "@/components/notification";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
+import BookDetail from "@/components/bookDetail";
+import code from "@/plugins/errorCode";
 
 export default {
   components: {
     Note,
-    Loading
+    Loading,
+    BookDetail
   },
   data: () => ({
     books: [],
-    loading: false
+    book: Object,
+    loading: false,
+    dialog: false
   }),
   async created() {
     this.loading = true;
-    // const getBooks = firebase.functions().httpsCallable("getBooks");
+    const getBooks = firebase.functions().httpsCallable("getBooks");
     try {
-      // const response = await getBooks({ uid: this.user.uid });
-      const response = await import("@/assets/sampleShelf.json");
+      const response = await getBooks({ uid: this.user.uid });
+      // const response = await import("@/assets/sampleShelf.json");
       this.books = response?.data?.body;
     } catch (error) {
       if (error.code == "unauthenticated") {
@@ -55,11 +61,40 @@ export default {
     ...mapState(["user"]),
     partializedBooks() {
       const ret = this.books.reduce((newArr, _, i) => (i % 12 ? newArr : [...newArr, this.books.slice(i, i + 12)]), []);
-      console.log(ret);
       return ret;
     }
   },
-  methods: {}
+  methods: {
+    openDetail(book) {
+      this.book = { ...book };
+      this.$refs.detail.open();
+    },
+    async update(data) {
+      this.loading = true;
+      const updateBook = firebase.functions().httpsCallable("updateBook");
+      try {
+        console.log(JSON.stringify(data));
+        await updateBook(data);
+        this.loading = false;
+        this.$refs.note.info("更新しました");
+        this.$router.go({ path: this.$router.currentRoute.path, force: true });
+      } catch (error) {
+        let e = "";
+        switch (error.code) {
+          case code.UNAUTHENTICATED:
+            this.$router.push("/error");
+            break;
+          case code.NOT_FOUND:
+            e = "データが見つかりませんでした";
+            break;
+          default:
+            e = "エラーが発生しました";
+        }
+        this.loading = false;
+        this.$refs.note.error(e);
+      }
+    }
+  }
 };
 </script>
 <style scoped>

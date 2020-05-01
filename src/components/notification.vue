@@ -51,7 +51,7 @@ export default {
   bottom: 3%;
   border-left: solid 15px;
   white-space: pre-wrap;
-  z-index: 1;
+  z-index: 10;
 }
 .success-bar {
   background-color: var(--accent-color) !important;

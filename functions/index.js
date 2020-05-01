@@ -32,14 +32,17 @@ exports.getBooks = functions.https.onCall(async (data, context) => {
 
 exports.addBookToShelf = functions.https.onCall(async (data, context) => {
   if (!context.auth) {
-    throw new functions.https.HttpsError("unauthenticated", e.message, e);
+    throw new functions.https.HttpsError("unauthenticated", "not authenticated");
   }
   if (!data || !data.id) {
     throw new functions.https.HttpsError("invalid-argument");
   }
   try {
     const bookRef = db.collection("book");
-    const snapshot = await bookRef.where("id", "==", data.id).get();
+    const snapshot = await bookRef
+      .where("user", "==", data.uid)
+      .where("id", "==", data.id)
+      .get();
     if (!snapshot.empty) {
       throw new functions.https.HttpsError("already-exists", "specified value is already exist.");
     } else {
@@ -52,6 +55,28 @@ exports.addBookToShelf = functions.https.onCall(async (data, context) => {
         publishedDate: data.publishedDate,
         pageCount: data.pageCount,
         description: data.description
+      });
+    }
+  } catch (e) {
+    throw new functions.https.HttpsError(e.code || "unknown", e.message, e);
+  }
+});
+
+exports.updateBook = functions.https.onCall(async (data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError("unauthenticated", "not authenticated");
+  }
+  try {
+    const bookRef = db.collection("book");
+    const snapshot = await bookRef
+      .where("user", "==", data.uid)
+      .where("id", "==", data.id)
+      .get();
+    if (snapshot.empty) {
+      throw new functions.https.HttpsError("not-found", "document not found");
+    } else {
+      snapshot.forEach(async doc => {
+        await doc.ref.update({ comment: data.comment, completed: data.completed });
       });
     }
   } catch (e) {

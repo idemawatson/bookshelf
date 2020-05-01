@@ -4,7 +4,7 @@
       <h3 class="page-title pt-3 pb-3">書籍検索</h3>
       <searchForm @search="search"></searchForm>
     </v-card>
-    <Book v-for="r in results" :key="r.index" v-bind="r">
+    <Book v-for="r in results" :key="r.index" v-bind:book="r">
       <template v-slot:activator>
         <v-btn @click="addBookToShelf(r)" class="mt-1 mb-2" small dark color="primary">本棚へ</v-btn>
       </template>
