@@ -72,7 +72,6 @@ export default {
         this.loading = false;
         this.$refs.note.info("本棚に追加しました");
       } catch (error) {
-        console.log(JSON.stringify(error));
         let e = "";
         switch (error.code) {
           case "unauthorized":

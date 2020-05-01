@@ -83,3 +83,57 @@ exports.updateBook = functions.https.onCall(async (data, context) => {
     throw new functions.https.HttpsError(e.code || "unknown", e.message, e);
   }
 });
+
+exports.getUserInfo = functions.https.onCall(async (data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError("unauthenticated", "not authenticated");
+  }
+  try {
+    const userRef = db.collection("user");
+    const userSnapshot = await userRef.where("id", "==", data.uid).get();
+    if (userSnapshot.empty) {
+      throw new functions.https.HttpsError("not-found", "document not found");
+    } else if (userSnapshot.size > 1) {
+      throw new functions.https.HttpsError("data-loss", "invalid data found");
+    } else {
+      const bookRef = db.collection("book");
+      const bookSnapshot = await bookRef
+        .where("user", "==", data.uid)
+        .where("completed", "==", true)
+        .get();
+      let exp = 0;
+      bookSnapshot.forEach(doc => {
+        exp += doc.data().pageCount;
+      });
+      const calc = calcurateLevel(exp);
+      userSnapshot.forEach(doc => {
+        ret = { ...doc.data(), ...calc };
+      });
+      ret.bookCount = bookSnapshot.size;
+      return { body: ret };
+    }
+  } catch (e) {
+    throw new functions.https.HttpsError(e.code || "unknown", e.message, e);
+  }
+});
+
+const calcurateLevel = exp => {
+  let standard = 50;
+  let level = 0;
+  let progress = 0;
+  const condition = true;
+  while (condition) {
+    progress = exp;
+    exp -= standard;
+    if (exp >= 0) {
+      level += 1;
+    } else {
+      break;
+    }
+    standard = Math.floor(standard * 1.1);
+  }
+  return {
+    progress: Math.floor((progress / standard) * 100),
+    level: level
+  };
+};

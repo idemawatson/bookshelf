@@ -73,7 +73,6 @@ export default {
       this.loading = true;
       const updateBook = firebase.functions().httpsCallable("updateBook");
       try {
-        console.log(JSON.stringify(data));
         await updateBook(data);
         this.loading = false;
         this.$refs.note.info("更新しました");

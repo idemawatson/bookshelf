@@ -4,6 +4,7 @@ import Login from "@/views/Login.vue";
 import Home from "@/views/Home.vue";
 import Error from "@/views/Error.vue";
 import Search from "@/views/Search.vue";
+import User from "@/views/User.vue";
 import store from "@/store";
 import firebase from "@/plugins/firebase";
 
@@ -25,6 +26,12 @@ const routes = [
     path: "/search",
     name: "search",
     component: Search,
+    meta: { requiredAuth: true }
+  },
+  {
+    path: "/user",
+    name: "user",
+    component: User,
     meta: { requiredAuth: true }
   },
   {
