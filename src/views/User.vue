@@ -79,7 +79,7 @@ export default {
           this.$router.push("/error");
           return;
         case code.NOT_FOUND:
-          e = "ユーザーが見つかりませんでした";
+          this.$router.push("/error");
           break;
         case code.DATA_LOSS:
           e = "データが不正です";

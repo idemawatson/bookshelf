@@ -54,11 +54,11 @@ export default {
   }),
   async created() {
     this.loading = true;
-    // const getBooks = firebase.functions().httpsCallable("getBooks");
+    const getBooks = firebase.functions().httpsCallable("getBooks");
     try {
-      // const response = await getBooks({ uid: this.user.uid });
+      const response = await getBooks({ uid: this.user.uid });
       // const response = await import("@/assets/sampleShelf.json");
-      // this.books = response?.data?.body;
+      this.books = response?.data?.body;
       this.loading = false;
     } catch (error) {
       if (error.code == "unauthenticated") {

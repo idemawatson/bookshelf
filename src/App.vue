@@ -8,14 +8,14 @@
             <v-list-item-title class="app-title" style="text-align: left">
               Bookshelf
             </v-list-item-title>
-            <v-btn icon>
-              <v-icon @click.stop="drawer = false">mdi-chevron-left</v-icon>
+            <v-btn icon name="chevron" @click.stop="close">
+              <v-icon>mdi-chevron-left</v-icon>
             </v-btn>
           </v-list-item>
           <v-divider />
           <v-list nav>
-            <v-list-item v-for="menu in menus" :key="menu.title" :to="menu.url">
-              <div @click="drawer = false">
+            <v-list-item v-for="menu in menus" :key="menu.title" :to="menu.url" @click.stop="close" :name="menu.icon">
+              <div>
                 <v-icon>{{ menu.icon }}</v-icon>
                 <div class="pa-2" style="display: inline;">{{ menu.title }}</div>
               </div>
@@ -48,6 +48,11 @@ export default {
     needBar() {
       const fullViewList = ["/login", "/error"];
       return !fullViewList.includes(this.$route.path);
+    }
+  },
+  methods: {
+    close() {
+      this.drawer = false;
     }
   }
 };
