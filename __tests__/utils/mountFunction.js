@@ -31,4 +31,4 @@ const mountFunctionWithRouter = (component, argOptions, isShallow = true) => {
   return mountFunctionImpl(component, {router, ...argOptions}, isShallow, localVue);
 }
 
-export { mountFunction, mountFunctionWithRouter };
+export { mountFunction, mountFunctionWithRouter, mountFunctionImpl };

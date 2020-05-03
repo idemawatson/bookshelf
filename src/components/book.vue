@@ -2,7 +2,7 @@
   <v-card outlined class="book-area">
     <v-row class="mr-2 ml-2">
       <v-col cols="4">
-        <v-img :src="book.url"></v-img>
+        <v-img id="book-img" :src="book.url"></v-img>
       </v-col>
       <v-col cols="8">
         <div class="book-detail">
@@ -17,7 +17,7 @@
               <slot name="activator"></slot>
             </v-col>
           </v-row>
-          <div class="pt-1">{{ book.description }}</div>
+          <div id="book-description" class="pt-1">{{ book.description }}</div>
         </div>
       </v-col>
     </v-row>

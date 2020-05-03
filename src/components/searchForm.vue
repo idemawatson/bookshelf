@@ -2,7 +2,7 @@
   <div>
     <form id="search-form" class=" mb-1">
       <input id="term-field" class="pa-1 pl-4" type="text" v-model="searchWord" placeholder="キーワードを入力" />
-      <v-icon medium class="term-clear" @click="searchWord = ''">mdi-close</v-icon>
+      <v-icon name="clear-icon" medium class="term-clear" @click="searchWord = ''">mdi-close</v-icon>
       <input type="button" id="search-btn" value="検索" @click="$emit('search', searchWord)" />
     </form>
   </div>

@@ -1,5 +1,5 @@
 import Component from "@/components/textField";
-import { mountFunction, mountFunctionWithRouter } from "../utils/mountFunction";
+import { mountFunction } from "../utils/mountFunction";
 
 let wrapper;
 
@@ -46,9 +46,8 @@ describe("emit", () => {
     const event = jest.fn();
     wrapper.vm.$on("input", event);
     const input = wrapper.find("input[id='test']");
-    console.log(input.html());
     expect(event).toHaveBeenCalledTimes(0);
     input.trigger("input");
-    expect(event).toHaveBeenCalledTimes(1);
+    expect(event).toHaveBeenCalledWith("値");
   });
 });

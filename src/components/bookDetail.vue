@@ -1,29 +1,27 @@
 <template>
-  <v-row justify="center">
-    <v-dialog v-model="dialog">
-      <v-card>
-        <Book v-bind:book="{ ...book }"></Book>
-        <v-card-text class="pa-2">
-          <v-container class="pa-3 pt-0">
-            <v-textarea
-              v-model="book.comment"
-              :rules="commentRules"
-              class="pa-0"
-              counter="100"
-              rows="3"
-              clearable
-              placeholder="感想・コメント"
-            ></v-textarea>
-            <v-checkbox v-model="book.completed" class="ma-0" label="読んだ！"></v-checkbox>
-            <v-row justify="space-around" class="pa-2">
-              <v-btn color="primary" @click.stop="update">OK</v-btn>
-              <v-btn color="primary" @click.stop="close">CANCEL</v-btn>
-            </v-row>
-          </v-container>
-        </v-card-text>
-      </v-card>
-    </v-dialog>
-  </v-row>
+  <v-dialog id="book-detail-modal" v-model="dialog">
+    <v-card>
+      <Book v-bind:book="{ ...book }"></Book>
+      <v-card-text class="pa-2">
+        <v-container class="pa-3 pt-0">
+          <v-textarea
+            v-model="book.comment"
+            :rules="commentRules"
+            class="pa-0"
+            counter="100"
+            rows="3"
+            clearable
+            placeholder="感想・コメント"
+          ></v-textarea>
+          <v-checkbox v-model="book.completed" class="ma-0" label="読んだ！"></v-checkbox>
+          <v-row justify="space-around" class="pa-2">
+            <v-btn name="update-btn" color="primary" @click.stop="update">OK</v-btn>
+            <v-btn name="close-btn" color="primary" @click.stop="close">CANCEL</v-btn>
+          </v-row>
+        </v-container>
+      </v-card-text>
+    </v-card>
+  </v-dialog>
 </template>
 <script>
 import Book from "@/components/book";
