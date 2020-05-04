@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test": "jest"
+    "test": "jest",
+    "test-watch": "jest --watch"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -20,6 +21,7 @@
     "vuex-persistedstate": "^3.0.1"
   },
   "devDependencies": {
+    "@firebase/testing": "^0.19.2",
     "@mdi/font": "^5.1.45",
     "@vue/cli-plugin-babel": "^4.2.0",
     "@vue/cli-plugin-eslint": "^4.2.0",

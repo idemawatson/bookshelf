@@ -21,15 +21,5 @@
         "destination": "/index.html"
       }
     ]
-  },
-  "emulators": {
-    "firestore": {
-      "host": "localhost",
-      "port": 5002
-    },
-    "functions": {
-      "host": "localhost",
-      "port": 5001
-    }
   }
 }
