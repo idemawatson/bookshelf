@@ -1,5 +1,4 @@
 import Component from "@/components/bookDetail";
-import App from "@/App";
 import Book from "@/components/book";
 import { mountFunction } from "../utils/mountFunction";
 

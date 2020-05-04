@@ -15,7 +15,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary" @click.stop="close">OK</v-btn>
+            <v-btn name="close-btn" color="primary" @click.stop="close">OK</v-btn>
           </v-card-actions>
         </v-card-text>
       </v-card>
