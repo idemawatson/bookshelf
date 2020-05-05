@@ -1,24 +1,21 @@
 rules_version = '2';
 service cloud.firestore {
-  function printRequest() {
-    return debug(request.auth.uid) || true;
-  }
-  function printResource() {
-    return debug(resource.data) || true;
+  function isAuthor(uid) {
+    return uid == request.auth.uid;
   }
 
   match /databases/{database}/documents {
     match /user/{document} {
       allow read: if true;
       allow create: if request.auth.uid != null;
-      allow update: if request.auth.uid == request.resource.data.uid;
-      allow delete: if request.auth.uid == resource.data.uid;
+      allow update: if isAuthor(request.resource.data.uid);
+      allow delete: if isAuthor(resource.data.uid);
     }
 
     match /book/{document} {
       allow read: if true;
-      allow create: if request.auth.uid == request.resource.data.uid;
-      allow update, delete: if request.auth.uid == resource.data.uid;
+      allow create: if isAuthor(request.resource.data.uid);
+      allow update, delete: if isAuthor(resource.data.uid);
     }
   }
 }

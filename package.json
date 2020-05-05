@@ -6,8 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test": "jest",
-    "test-watch": "jest --watch"
+    "test": "jest"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -82,6 +81,7 @@
       "<rootDir>/__tests__/utils/setup.js",
       "dotenv/config"
     ],
-    "testRegex": "(/__tests__/.*\\.(test|spec))\\.[jt]sx?$"
+    "testRegex": "(/__tests__/.*\\.(test|spec))\\.[jt]sx?$",
+    "testPathIgnorePatterns": ["/functions/"]
   }
 }

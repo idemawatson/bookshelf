@@ -9,12 +9,11 @@ exports.addUser = functions.https.onCall(async (data, context) => {
     name: data.name,
     id: data.uid
   });
-  console.log(context);
 });
 
 exports.getBooks = functions.https.onCall(async (data, context) => {
   if (!context.auth) {
-    throw new functions.https.HttpsError("unauthenticated", e.message, e);
+    throw new functions.https.HttpsError("unauthenticated", "not authenticated");
   }
   try {
     const bookRef = db.collection("book");
@@ -35,7 +34,7 @@ exports.addBookToShelf = functions.https.onCall(async (data, context) => {
     throw new functions.https.HttpsError("unauthenticated", "not authenticated");
   }
   if (!data || !data.id) {
-    throw new functions.https.HttpsError("invalid-argument");
+    throw new functions.https.HttpsError("invalid-argument", "request format is invalid.");
   }
   try {
     const bookRef = db.collection("book");
@@ -46,7 +45,7 @@ exports.addBookToShelf = functions.https.onCall(async (data, context) => {
     if (!snapshot.empty) {
       throw new functions.https.HttpsError("already-exists", "specified value is already exist.");
     } else {
-      bookRef.add({
+      await bookRef.add({
         id: data.id,
         user: data.uid,
         title: data.title,
@@ -75,9 +74,7 @@ exports.updateBook = functions.https.onCall(async (data, context) => {
     if (snapshot.empty) {
       throw new functions.https.HttpsError("not-found", "document not found");
     } else {
-      snapshot.forEach(async doc => {
-        await doc.ref.update({ comment: data.comment, completed: data.completed });
-      });
+      await snapshot.docs[0].ref.update({ comment: data.comment, completed: data.completed });
     }
   } catch (e) {
     throw new functions.https.HttpsError(e.code || "unknown", e.message, e);
@@ -106,17 +103,15 @@ exports.getUserInfo = functions.https.onCall(async (data, context) => {
         exp += doc.data().pageCount;
       });
       const calc = calcurateLevel(exp);
-      let ret = {};
-      userSnapshot.forEach(doc => {
-        ret = {
-          ...doc.data(),
-          ...calc,
-          pageCount: exp,
-          bookCount: bookSnapshot.size,
-          beforeLevel: doc.data().level || 0
-        };
-        doc.ref.update({ level: calc.level });
-      });
+      const doc = userSnapshot.docs[0].data();
+      const ret = {
+        ...doc,
+        ...calc,
+        pageCount: exp,
+        bookCount: bookSnapshot.size,
+        beforeLevel: doc.level || 0
+      };
+      await userSnapshot.docs[0].ref.update({ level: calc.level });
       return { body: ret };
     }
   } catch (e) {
