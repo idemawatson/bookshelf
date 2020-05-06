@@ -1,8 +1,8 @@
 <template>
   <div>
     <form id="search-form" class=" mb-1">
-      <input id="term-field" class="pa-1 pl-4" type="text" v-model="searchWord" placeholder="キーワードを入力" />
-      <v-icon name="clear-icon" medium class="term-clear" @click="searchWord = ''">mdi-close</v-icon>
+      <input id="term-field" class="pa-1 pl-4" type="text" v-model="searchWord" :placeholder="placeholder" />
+      <v-icon name="clear-icon" medium class="term-clear" @click="clear">mdi-clear</v-icon>
       <input type="button" id="search-btn" value="検索" @click="$emit('search', searchWord)" />
     </form>
   </div>
@@ -11,7 +11,15 @@
 export default {
   data: () => ({
     searchWord: ""
-  })
+  }),
+  methods: {
+    clear() {
+      this.searchWord = "";
+    }
+  },
+  props: {
+    placeholder: String
+  }
 };
 </script>
 <style scoped>
@@ -27,8 +35,9 @@ export default {
   text-align: center;
 }
 #term-field {
-  width: 80%;
+  width: 100%;
   border-radius: 20px;
+  font-size: 15px;
   outline: 0;
   background: white;
   border: solid 3px var(--gray-color);
@@ -38,12 +47,12 @@ export default {
 .term-clear {
   position: absolute;
   top: 25%;
-  right: 26%;
-  color: var(--dark-color);
+  right: 16%;
+  color: var(--gray-color);
 }
 #search-btn {
   position: absolute;
-  right: 10%;
+  right: 0%;
   background: var(--dark-color);
   color: var(--white-color);
   border-radius: 0 20px 20px 0;

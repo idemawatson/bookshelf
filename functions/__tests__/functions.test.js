@@ -215,3 +215,162 @@ describe("getUserInfo", () => {
     }).rejects.toEqual(error);
   });
 });
+
+describe("searchUser", () => {
+  const wrapped = test.wrap(myFunctions.searchUser);
+  it("正常終了", async () => {
+    let batch = firestore.batch();
+    const userRef = firestore.collection("user");
+    batch.set(userRef.doc("1"), {
+      id: UID,
+      name: "test-name"
+    });
+    batch.set(userRef.doc("2"), {
+      id: OTHER_UID,
+      name: "other-test-name"
+    });
+    await batch.commit();
+    const friend = await wrapped({ uid: UID, searchId: OTHER_UID }, { auth: UID });
+    expect(friend.name).toEqual("other-test-name");
+    expect(friend.id).toEqual(OTHER_UID);
+  });
+  it("検索対象が空の場合も正常終了する", async () => {
+    await firestore.collection("user").add({
+      id: UID,
+      name: "test-name"
+    });
+    const friend = await wrapped({ uid: UID, searchId: OTHER_UID }, { auth: UID });
+    expect(friend).toBeNull();
+  });
+  it("引数が不適切な場合エラー", async () => {
+    const error = new functions.https.HttpsError("invalid-argument", "request format is invalid.");
+    await expect(async () => {
+      await wrapped({ searchId: OTHER_UID }, { auth: UID });
+    }).rejects.toEqual(error);
+    await expect(async () => {
+      await wrapped({ uid: UID }, { auth: UID });
+    }).rejects.toEqual(error);
+    await expect(async () => {
+      await wrapped({ uid: UID, searchId: UID }, { auth: UID });
+    }).rejects.toEqual(error);
+  });
+});
+
+describe("addFriend", () => {
+  const wrapped = test.wrap(myFunctions.addFriend);
+  const ANOTHER_UID = "test-user-another";
+  it("正常終了", async () => {
+    let batch = firestore.batch();
+    const userRef = firestore.collection("user");
+    batch.set(userRef.doc("1"), {
+      id: UID,
+      name: "test-name"
+    });
+    batch.set(userRef.doc("2"), {
+      id: OTHER_UID,
+      name: "other-test-name"
+    });
+    batch.set(userRef.doc("3"), {
+      id: ANOTHER_UID,
+      name: "another-test-name"
+    });
+    await batch.commit();
+    //一人目
+    await wrapped({ uid: UID, friend: OTHER_UID }, { auth: UID });
+    let user = await firestore
+      .collection("user")
+      .where("id", "==", UID)
+      .get();
+    expect(user.docs[0].data().id).toEqual(UID);
+    expect(user.docs[0].data().friend).toEqual([OTHER_UID]);
+    //二人目
+    await wrapped({ uid: UID, friend: ANOTHER_UID }, { auth: UID });
+    user = await firestore
+      .collection("user")
+      .where("id", "==", UID)
+      .get();
+    expect(user.docs[0].data().id).toEqual(UID);
+    expect(user.docs[0].data().friend).toEqual([OTHER_UID, ANOTHER_UID]);
+  });
+  it("引数が不適切な場合エラー", async () => {
+    const error = new functions.https.HttpsError("invalid-argument", "request format is invalid.");
+    //uidなし
+    await expect(async () => {
+      await wrapped({ friend: OTHER_UID }, { auth: UID });
+    }).rejects.toEqual(error);
+    //friendなし
+    await expect(async () => {
+      await wrapped({ uid: UID }, { auth: UID });
+    }).rejects.toEqual(error);
+    //uid==friend
+    await expect(async () => {
+      await wrapped({ uid: UID, friend: UID }, { auth: UID });
+    }).rejects.toEqual(error);
+  });
+  it("対象ユーザーが存在しない場合エラー", async () => {
+    const error = new functions.https.HttpsError("not-found", "document not found");
+    //userなし
+    await expect(async () => {
+      await wrapped({ uid: UID, friend: OTHER_UID }, { auth: UID });
+    }).rejects.toEqual(error);
+    await firestore.collection("user").add({
+      id: UID,
+      name: "test-name"
+    });
+    //friendなし
+    await expect(async () => {
+      await wrapped({ uid: UID, friend: OTHER_UID }, { auth: UID });
+    }).rejects.toEqual(error);
+  });
+});
+
+describe("getFriends", () => {
+  const wrapped = test.wrap(myFunctions.getFriends);
+  const ANOTHER_UID = "test-user-another";
+  it("正常終了", async () => {
+    let batch = firestore.batch();
+    const userRef = firestore.collection("user");
+    const other = {
+      id: OTHER_UID,
+      name: "other-test-name",
+      level: 1
+    };
+    const another = {
+      id: ANOTHER_UID,
+      name: "another-test-name",
+      level: 2
+    };
+    batch.set(userRef.doc("1"), {
+      id: UID,
+      name: "test-name",
+      friend: [OTHER_UID, ANOTHER_UID]
+    });
+    batch.set(userRef.doc("2"), other);
+    batch.set(userRef.doc("3"), another);
+    await batch.commit();
+    const friend = await wrapped({ uid: UID }, { auth: UID });
+    delete other.id;
+    delete another.id;
+    expect(friend).toEqual([other, another]);
+  });
+  it("正常終了_フレンドが空", async () => {
+    await firestore.collection("user").add({
+      id: UID,
+      name: "test-name"
+    });
+    const friend = await wrapped({ uid: UID }, { auth: UID });
+    expect(friend).toEqual([]);
+  });
+  it("引数が不適切の場合エラー", async () => {
+    const error = new functions.https.HttpsError("invalid-argument", "request format is invalid.");
+    await expect(async () => {
+      await wrapped({}, { auth: UID });
+    }).rejects.toEqual(error);
+  });
+  it("ユーザーが存在しない場合エラー", async () => {
+    const error = new functions.https.HttpsError("not-found", "document not found");
+    await expect(async () => {
+      await wrapped({ uid: UID }, { auth: UID });
+    }).rejects.toEqual(error);
+  });
+});

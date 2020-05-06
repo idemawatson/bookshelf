@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-card class="pb-3" :class="formPosition" flat color="lighten">
+    <v-card class="pb-3 search-form" :class="formPosition" flat color="lighten">
       <h3 class="page-title pt-3 pb-3">書籍検索</h3>
-      <searchForm @search="search"></searchForm>
+      <searchForm @search="search" :placeholder="placeholder"></searchForm>
     </v-card>
     <Book v-for="r in results" :key="r.index" v-bind:book="r">
       <template v-slot:activator>
@@ -31,7 +31,8 @@ export default {
   },
   data: () => ({
     results: [],
-    loading: false
+    loading: false,
+    placeholder: "キーワードを入力"
   }),
   methods: {
     async search(searchWord) {
@@ -107,9 +108,12 @@ export default {
   color: var(--gray-color);
   letter-spacing: 0.1em;
 }
+.search-form {
+  width: 80%;
+  margin: auto;
+}
 .center-card {
   position: absolute;
-  width: 100%;
   top: 40%;
 }
 </style>

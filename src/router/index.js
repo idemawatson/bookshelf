@@ -3,8 +3,10 @@ import VueRouter from "vue-router";
 import Login from "@/views/Login.vue";
 import Home from "@/views/Home.vue";
 import Error from "@/views/Error.vue";
+import Error500 from "@/views/Error500.vue";
 import Search from "@/views/Search.vue";
 import User from "@/views/User.vue";
+import Friend from "@/views/Friend.vue";
 import store from "@/store";
 import firebase from "@/plugins/firebase";
 
@@ -35,6 +37,12 @@ const routes = [
     meta: { requiredAuth: true }
   },
   {
+    path: "/friend",
+    name: "friend",
+    component: Friend,
+    meta: { requiredAuth: true }
+  },
+  {
     path: "*",
     redirect: { name: "Error" }
   },
@@ -42,7 +50,12 @@ const routes = [
     path: "/error",
     name: "Error",
     component: Error
-  }
+  },
+  {
+    path: "/500",
+    name: "Error500",
+    component: Error500
+  },
 ];
 
 const router = new VueRouter({

@@ -72,23 +72,13 @@ export default {
       this.loading = false;
       if (this.user.beforeLevel < this.user.level) this.$refs.levelUp.open();
     } catch (error) {
-      let e = "";
-      console.log(error);
       switch (error.code) {
         case code.UNAUTHORIZED:
           this.$router.push("/error");
           return;
-        case code.NOT_FOUND:
-          this.$router.push("/error");
-          break;
-        case code.DATA_LOSS:
-          e = "データが不正です";
-          break;
         default:
-          e = "通信エラーが発生しました";
+          this.$router.path("/500");
       }
-      this.loading = false;
-      this.$refs.note.error(e);
     }
   }
 };

@@ -46,7 +46,7 @@ export default {
   }),
   computed: {
     needBar() {
-      const fullViewList = ["/login", "/error"];
+      const fullViewList = ["/login", "/error", "/500"];
       return !fullViewList.includes(this.$route.path);
     }
   },

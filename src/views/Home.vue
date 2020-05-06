@@ -65,7 +65,7 @@ export default {
         this.$router.push("/error");
       } else {
         this.loading = false;
-        this.$refs.note.error("エラーが発生しました");
+        this.$router.path("/500");
       }
     }
   },
