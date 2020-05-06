@@ -24,7 +24,36 @@ exports.getBooks = functions.https.onCall(async (data, context) => {
     });
     return { body: ret };
   } catch (e) {
-    console.error("getBooks: " + e);
+    throw new functions.https.HttpsError("unknown", e.message, e);
+  }
+});
+
+exports.getFriendBooks = functions.https.onCall(async (data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError("unauthenticated", "not authenticated");
+  }
+  if (!data.uid || !data.friendId || data.uid === data.friendId) {
+    throw new functions.https.HttpsError("invalid-argument", "request format is invalid.");
+  }
+  try {
+    const currentUserSnapshot = await db
+      .collection("user")
+      .where("id", "==", data.uid)
+      .get();
+    const friends = currentUserSnapshot.docs[0].data().friend;
+    if (!friends.includes(data.friendId)) {
+      throw new functions.https.HttpsError("permission-denied", "have no access rights.");
+    }
+    const friendBookSnapshot = await db
+      .collection("book")
+      .where("user", "==", data.friendId)
+      .get();
+    let ret = [];
+    friendBookSnapshot.forEach(doc => {
+      ret.push(doc.data());
+    });
+    return ret;
+  } catch (e) {
     throw new functions.https.HttpsError("unknown", e.message, e);
   }
 });
@@ -177,9 +206,7 @@ exports.getFriends = functions.https.onCall(async (data, context) => {
       .where("id", "in", friends)
       .get();
     docs.forEach(doc => {
-      const data = doc.data();
-      delete data.id;
-      res.push(data);
+      res.push(doc.data());
     });
     return res;
   } catch (e) {

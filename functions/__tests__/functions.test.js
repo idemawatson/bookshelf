@@ -77,6 +77,78 @@ describe("getBooks", () => {
   });
 });
 
+describe("getFriendBooks", () => {
+  const wrapped = test.wrap(myFunctions.getFriendBooks);
+  const ANOTHER_UID = "test-user-another";
+  const user = {
+    id: UID,
+    name: "test-name",
+    friend: [OTHER_UID]
+  };
+  const other = {
+    id: OTHER_UID,
+    name: "other-test-name"
+  };
+  const another = {
+    id: ANOTHER_UID,
+    name: "another-test-name"
+  };
+  const book1 = {
+    name: "test-book",
+    user: UID
+  };
+  const book2 = {
+    name: "test-book-2",
+    user: OTHER_UID
+  };
+  const book3 = {
+    name: "test-book-3",
+    user: OTHER_UID
+  };
+  it("正常終了", async () => {
+    let batch = firestore.batch();
+    const userRef = firestore.collection("user");
+    const bookRef = firestore.collection("book");
+    batch.set(userRef.doc("1"), user);
+    batch.set(userRef.doc("2"), other);
+    batch.set(userRef.doc("3"), another);
+    batch.set(bookRef.doc("1"), book1);
+    batch.set(bookRef.doc("2"), book2);
+    batch.set(bookRef.doc("3"), book3);
+    await batch.commit();
+    const books = await wrapped({ uid: UID, friendId: OTHER_UID }, { auth: UID });
+    expect(books).toEqual([book2, book3]);
+  });
+  it("フレンドでないユーザを参照しようとした場合エラー", async () => {
+    let batch = firestore.batch();
+    const userRef = firestore.collection("user");
+    const bookRef = firestore.collection("book");
+    batch.set(userRef.doc("1"), user);
+    batch.set(userRef.doc("2"), other);
+    batch.set(userRef.doc("3"), another);
+    batch.set(bookRef.doc("1"), book1);
+    batch.set(bookRef.doc("2"), book2);
+    batch.set(bookRef.doc("3"), book3);
+    await batch.commit();
+    const error = new functions.https.HttpsError("permission-denied", "have no access rights.");
+    await expect(async () => {
+      await wrapped({ uid: UID, friendId: ANOTHER_UID }, { auth: UID });
+    }).rejects.toEqual(error);
+  });
+  it("引数が不適切な場合エラー", async () => {
+    const error = new functions.https.HttpsError("invalid-argument", "request format is invalid.");
+    await expect(async () => {
+      await wrapped({ friendId: OTHER_UID }, { auth: UID });
+    }).rejects.toEqual(error);
+    await expect(async () => {
+      await wrapped({ uid: UID }, { auth: UID });
+    }).rejects.toEqual(error);
+    await expect(async () => {
+      await wrapped({ uid: UID, friendId: UID }, { auth: UID });
+    }).rejects.toEqual(error);
+  });
+});
+
 describe("addBookToShelf", () => {
   beforeEach(async () => {
     await firestore.collection("user").add({
@@ -349,8 +421,6 @@ describe("getFriends", () => {
     batch.set(userRef.doc("3"), another);
     await batch.commit();
     const friend = await wrapped({ uid: UID }, { auth: UID });
-    delete other.id;
-    delete another.id;
     expect(friend).toEqual([other, another]);
   });
   it("正常終了_フレンドが空", async () => {
