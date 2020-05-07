@@ -290,6 +290,7 @@ describe("getUserInfo", () => {
 
 describe("searchUser", () => {
   const wrapped = test.wrap(myFunctions.searchUser);
+  const ANOTHER_UID = "test-user-another";
   it("正常終了", async () => {
     let batch = firestore.batch();
     const userRef = firestore.collection("user");
@@ -324,6 +325,28 @@ describe("searchUser", () => {
     }).rejects.toEqual(error);
     await expect(async () => {
       await wrapped({ uid: UID, searchId: UID }, { auth: UID });
+    }).rejects.toEqual(error);
+  });
+  it("登録済みユーザーの場合エラー", async () => {
+    const error = new functions.https.HttpsError("already-exists", "user already exists in friends.");
+    let batch = firestore.batch();
+    const userRef = firestore.collection("user");
+    batch.set(userRef.doc("1"), {
+      id: UID,
+      name: "test-name",
+      friend: [OTHER_UID, ANOTHER_UID]
+    });
+    batch.set(userRef.doc("2"), {
+      id: OTHER_UID,
+      name: "other-test-name"
+    });
+    batch.set(userRef.doc("3"), {
+      id: ANOTHER_UID,
+      name: "another-test-name"
+    });
+    await batch.commit();
+    await expect(async () => {
+      await wrapped({ uid: UID, searchId: OTHER_UID }, { auth: UID });
     }).rejects.toEqual(error);
   });
 });
@@ -393,6 +416,33 @@ describe("addFriend", () => {
     await expect(async () => {
       await wrapped({ uid: UID, friend: OTHER_UID }, { auth: UID });
     }).rejects.toEqual(error);
+  });
+  it("登録済みユーザーの場合エラー", async () => {
+    const error = new functions.https.HttpsError("already-exists", "user already exists in friends.");
+    let batch = firestore.batch();
+    const userRef = firestore.collection("user");
+    batch.set(userRef.doc("1"), {
+      id: UID,
+      name: "test-name",
+      friend: [OTHER_UID, ANOTHER_UID]
+    });
+    batch.set(userRef.doc("2"), {
+      id: OTHER_UID,
+      name: "other-test-name"
+    });
+    batch.set(userRef.doc("3"), {
+      id: ANOTHER_UID,
+      name: "another-test-name"
+    });
+    await batch.commit();
+    await expect(async () => {
+      await wrapped({ uid: UID, friend: OTHER_UID }, { auth: UID });
+    }).rejects.toEqual(error);
+    const user = await firestore
+      .collection("user")
+      .where("id", "==", UID)
+      .get();
+    expect(user.docs[0].data().friend).toEqual([OTHER_UID, ANOTHER_UID]);
   });
 });
 

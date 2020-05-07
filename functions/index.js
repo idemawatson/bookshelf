@@ -161,6 +161,8 @@ exports.addFriend = functions.https.onCall(async (data, context) => {
       throw new functions.https.HttpsError("not-found", "document not found");
     }
     let currentFriends = user.docs[0].data().friend || [];
+    if (currentFriends.length > 0 && currentFriends.includes(data.friend))
+      throw new functions.https.HttpsError("already-exists", "user already exists in friends.");
     currentFriends.push(friend.docs[0].data().id);
     await user.docs[0].ref.update({ friend: currentFriends });
   } catch (e) {
@@ -172,15 +174,18 @@ exports.searchUser = functions.https.onCall(async (data, context) => {
   if (!context.auth) {
     throw new functions.https.HttpsError("unauthenticated", "not authenticated");
   }
+  if (!data.uid || !data.searchId || data.uid === data.searchId) {
+    throw new functions.https.HttpsError("invalid-argument", "request format is invalid.");
+  }
   try {
-    if (!data.uid || !data.searchId || data.uid === data.searchId) {
-      throw new functions.https.HttpsError("invalid-argument", "request format is invalid.");
-    }
-    const result = await db
-      .collection("user")
-      .where("id", "==", data.searchId)
-      .get();
+    const userRef = db.collection("user");
+    const result = await userRef.where("id", "==", data.searchId).get();
     if (result.empty) return null;
+    const currentUser = await userRef.where("id", "==", data.uid).get();
+    console.log(currentUser.docs[0].data());
+    const friends = currentUser.docs[0].data().friend;
+    if (friends && friends.includes(result.docs[0].data().id))
+      throw new functions.https.HttpsError("already-exists", "user already exists in friends.");
     return { ...result.docs[0].data() };
   } catch (e) {
     throw new functions.https.HttpsError(e.code || "unknown", e.message, e);
