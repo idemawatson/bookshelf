@@ -32,7 +32,7 @@
     <v-row justify="center">
       <FriendCard v-for="friend in friends" :key="friend.index" :user="friend">
         <template v-slot:activator>
-          <v-col cols="4"><v-btn color="primary" raised dark>本棚</v-btn></v-col>
+          <v-col cols="4"><v-btn color="primary" raised dark @click="toShelf(friend)">本棚</v-btn></v-col>
         </template>
       </FriendCard>
     </v-row>
@@ -116,6 +116,9 @@ export default {
           case code.INVALID_ARGUMENT:
             e = "無効なリクエストです";
             break;
+          case code.ALREADY_EXISTS:
+            e = "既にフレンドのユーザーです";
+            break;
           default:
             e = "エラーが発生しました";
         }
@@ -142,12 +145,18 @@ export default {
           case code.NOT_FOUND:
             e = "データが見つかりません";
             break;
+          case code.ALREADY_EXISTS:
+            e = "既にフレンドのユーザーです";
+            break;
           default:
             e = "エラーが発生しました";
         }
         this.loading = false;
         this.$refs.note.error(e);
       }
+    },
+    toShelf(friend) {
+      this.$router.push({ path: "/friendhome", query: { friendId: friend.id, name: friend.name } });
     }
   }
 };

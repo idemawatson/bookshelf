@@ -41,7 +41,8 @@ export default {
     menus: [
       { title: "本棚", icon: "mdi-home", url: "/home" },
       { title: "書籍検索", icon: "mdi-magnify", url: "/search" },
-      { title: "プロフィール", icon: "mdi-account", url: "/user" }
+      { title: "プロフィール", icon: "mdi-account", url: "/user" },
+      { title: "フレンド", icon: "mdi-account-multiple-plus", url: "/friend" },
     ]
   }),
   computed: {
