@@ -21,10 +21,11 @@ describe("HeaderとDrawerの表示", () => {
     expect(wrapper.contains(Header)).toBe(true);
     expect(wrapper.contains(".v-navigation-drawer")).toBe(true);
     const listItems = wrapper.findAll(".v-navigation-drawer router-link-stub");
-    expect(listItems.length).toEqual(3);
+    expect(listItems.length).toEqual(4);
     expect(listItems.wrappers[0].html()).toMatch(/本棚/);
     expect(listItems.wrappers[1].html()).toMatch(/書籍検索/);
     expect(listItems.wrappers[2].html()).toMatch(/プロフィール/);
+    expect(listItems.wrappers[3].html()).toMatch(/フレンド/);
   });
 
   it("指定されたpathの場合headerとdrawerが表示されない", () => {
