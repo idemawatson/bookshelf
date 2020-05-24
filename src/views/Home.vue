@@ -28,7 +28,7 @@
       <Note ref="note"></Note>
       <Loading :active.sync="loading" :is-full-page="true" color="#4caf50" :opacity="1"></Loading>
     </v-container>
-    <BookDetail ref="detail" :book="book" @update="update"></BookDetail>
+    <BookDetail ref="detail" :book="book" @update="update" @deleteBook="deleteBook"></BookDetail>
   </div>
 </template>
 <script>
@@ -80,6 +80,18 @@ export default {
     openDetail(book) {
       this.book = { ...book };
       this.$refs.detail.open();
+    },
+    async deleteBook(bookId) {
+      this.loading = true;
+      const deleteBook = firebase.functions().httpsCallable("deleteBook");
+      try {
+        await deleteBook({ uid: this.user.uid, id: bookId });
+        this.loading = false;
+        this.$router.go({ path: this.$router.currentRoute.path, force: true });
+      } catch (e) {
+        this.loading = false;
+        this.$router.push("/error");
+      }
     },
     async update(data) {
       this.loading = true;

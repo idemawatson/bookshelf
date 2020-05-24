@@ -1,16 +1,7 @@
-import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
-const test = require("firebase-functions-test")(
-  {
-    databaseURL: "https://fortesting-7eb95.firebaseio.com",
-    projectId: "fortesting-7eb95",
-    storageBucket: "fortesting-7eb95.appspot.com"
-  },
-  `${__dirname}/../keys/serviceAccountKey_test.json`
-);
 import * as myFunctions from "../index";
+import { firestore, test } from "./testenv";
 import { deleteCollection } from "./util";
-const firestore = admin.firestore();
 
 const UID = "test-user";
 const OTHER_UID = "test-user-other";

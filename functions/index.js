@@ -1,9 +1,11 @@
 const admin = require("firebase-admin");
 const functions = require("firebase-functions");
-
 admin.initializeApp(functions.config().firebase);
 
 let db = admin.firestore();
+exports.firestore = db;
+const deleteBook = require("./deleteBook");
+
 exports.addUser = functions.https.onCall(async (data, context) => {
   await db.collection("user").add({
     name: data.name,
@@ -182,7 +184,6 @@ exports.searchUser = functions.https.onCall(async (data, context) => {
     const result = await userRef.where("id", "==", data.searchId).get();
     if (result.empty) return null;
     const currentUser = await userRef.where("id", "==", data.uid).get();
-    console.log(currentUser.docs[0].data());
     const friends = currentUser.docs[0].data().friend;
     if (friends && friends.includes(result.docs[0].data().id))
       throw new functions.https.HttpsError("already-exists", "user already exists in friends.");
@@ -218,6 +219,8 @@ exports.getFriends = functions.https.onCall(async (data, context) => {
     throw new functions.https.HttpsError(e.code || "unknown", e.message, e);
   }
 });
+
+exports.deleteBook = functions.https.onCall(async (data, context) => deleteBook(data, context));
 
 const calcurateLevel = exp => {
   let standard = 50;
